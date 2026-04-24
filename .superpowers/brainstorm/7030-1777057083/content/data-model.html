@@ -1,0 +1,178 @@
+<h2>Data Model — 2 New Tables</h2>
+<p class="subtitle">Added to existing Supabase. Green fields are FSRS placeholders — populated in sub-project 2.</p>
+
+<div style="display:flex;gap:20px;flex-wrap:wrap;max-width:860px;margin:0 auto;">
+
+  <!-- vocabulary_cards -->
+  <div style="flex:1;min-width:340px;background:var(--card-bg,#1e1e2e);border:2px solid #89b4fa;border-radius:12px;overflow:hidden;">
+    <div style="background:#89b4fa;padding:12px 16px;">
+      <div style="font-weight:700;color:#1e1e2e;font-size:15px;">vocabulary_cards</div>
+      <div style="font-size:12px;color:#313244;">~650 rows seeded from Goethe-Institut A1 list</div>
+    </div>
+    <div style="padding:16px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="color:#a6adc8;text-align:left;border-bottom:1px solid #313244;">
+            <th style="padding:4px 8px;">column</th>
+            <th style="padding:4px 8px;">type</th>
+            <th style="padding:4px 8px;">notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;color:#cba6f7;">card_id</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid PK</td>
+            <td style="padding:5px 8px;color:#a6adc8;"></td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">user_id</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid FK</td>
+            <td style="padding:5px 8px;color:#a6adc8;">→ users</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">word</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">e.g. "kaufen"</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">article</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">der/die/das/—</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">translation_tr</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">Turkish translation</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">example_sentence</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">German A1 example</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">topic</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">Goethe topic (family, work…)</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">pos</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">noun/verb/adj/adv…</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">status</td>
+            <td style="padding:5px 8px;color:#f38ba8;">enum</td>
+            <td style="padding:5px 8px;color:#a6adc8;">new / seen / struggling / known</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">seen_count</td>
+            <td style="padding:5px 8px;color:#f38ba8;">int</td>
+            <td style="padding:5px 8px;color:#a6adc8;">default 0</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">last_seen_at</td>
+            <td style="padding:5px 8px;color:#f38ba8;">timestamptz</td>
+            <td style="padding:5px 8px;color:#a6adc8;"></td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">next_review_at</td>
+            <td style="padding:5px 8px;color:#f38ba8;">timestamptz</td>
+            <td style="padding:5px 8px;color:#a6adc8;">simple interval for now</td>
+          </tr>
+          <!-- FSRS fields -->
+          <tr style="border-bottom:1px solid #313244;background:#1a2a1a;">
+            <td style="padding:5px 8px;color:#a6e3a1;">stability</td>
+            <td style="padding:5px 8px;color:#f38ba8;">float</td>
+            <td style="padding:5px 8px;color:#a6e3a1;">FSRS — null until sub-project 2</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;background:#1a2a1a;">
+            <td style="padding:5px 8px;color:#a6e3a1;">difficulty</td>
+            <td style="padding:5px 8px;color:#f38ba8;">float</td>
+            <td style="padding:5px 8px;color:#a6e3a1;">FSRS — null until sub-project 2</td>
+          </tr>
+          <tr>
+            <td style="padding:5px 8px;color:#a6adc8;">created_at</td>
+            <td style="padding:5px 8px;color:#f38ba8;">timestamptz</td>
+            <td style="padding:5px 8px;color:#a6adc8;">default now()</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- learning_sessions -->
+  <div style="flex:1;min-width:340px;background:var(--card-bg,#1e1e2e);border:2px solid #a6e3a1;border-radius:12px;overflow:hidden;">
+    <div style="background:#a6e3a1;padding:12px 16px;">
+      <div style="font-weight:700;color:#1e1e2e;font-size:15px;">learning_sessions</div>
+      <div style="font-size:12px;color:#313244;">One row per study session</div>
+    </div>
+    <div style="padding:16px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="color:#a6adc8;text-align:left;border-bottom:1px solid #313244;">
+            <th style="padding:4px 8px;">column</th>
+            <th style="padding:4px 8px;">type</th>
+            <th style="padding:4px 8px;">notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;color:#cba6f7;">session_id</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid PK</td>
+            <td style="padding:5px 8px;color:#a6adc8;"></td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">user_id</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid FK</td>
+            <td style="padding:5px 8px;color:#a6adc8;">→ users</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">started_at</td>
+            <td style="padding:5px 8px;color:#f38ba8;">timestamptz</td>
+            <td style="padding:5px 8px;color:#a6adc8;"></td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">ended_at</td>
+            <td style="padding:5px 8px;color:#f38ba8;">timestamptz</td>
+            <td style="padding:5px 8px;color:#a6adc8;">null if in progress</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">phase_reached</td>
+            <td style="padding:5px 8px;color:#f38ba8;">enum</td>
+            <td style="padding:5px 8px;color:#a6adc8;">warmup/lesson/conversation/done</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">lesson_topic</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">e.g. "Selamlaşma"</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">words_reviewed</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid[]</td>
+            <td style="padding:5px 8px;color:#a6adc8;">card_ids shown in warmup</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">words_introduced</td>
+            <td style="padding:5px 8px;color:#f38ba8;">uuid[]</td>
+            <td style="padding:5px 8px;color:#a6adc8;">new words taught this session</td>
+          </tr>
+          <tr style="border-bottom:1px solid #313244;">
+            <td style="padding:5px 8px;">corrections_count</td>
+            <td style="padding:5px 8px;color:#f38ba8;">int</td>
+            <td style="padding:5px 8px;color:#a6adc8;">mistakes corrected</td>
+          </tr>
+          <tr>
+            <td style="padding:5px 8px;">session_summary</td>
+            <td style="padding:5px 8px;color:#f38ba8;">text</td>
+            <td style="padding:5px 8px;color:#a6adc8;">LLM-generated end-of-session note</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:860px;margin:20px auto 0;background:var(--card-bg,#1e1e2e);border:1px solid #313244;border-radius:10px;padding:14px 18px;font-size:13px;color:#a6adc8;">
+  <span style="color:#fab387;font-weight:600;">Review scheduling (sub-project 1):</span> simple time-based rule — new words after 1 day, seen after 3 days, struggling same day, known after 7 days. Replaced entirely by py-fsrs in sub-project 2 without schema changes.
+</div>

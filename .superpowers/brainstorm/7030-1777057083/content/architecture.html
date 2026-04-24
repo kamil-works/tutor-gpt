@@ -1,0 +1,82 @@
+<h2>Architecture — Chat Tutor Core</h2>
+<p class="subtitle">Sub-project 1: Tutor-GPT fork + vocabulary layer</p>
+
+<div style="display:flex;flex-direction:column;gap:16px;max-width:720px;margin:0 auto;">
+
+  <!-- User layer -->
+  <div style="background:var(--card-bg,#1e1e2e);border:1px solid var(--border,#3a3a5c);border-radius:12px;padding:20px;text-align:center;">
+    <div class="label" style="color:#a6adc8;margin-bottom:8px;">USER</div>
+    <div style="display:flex;justify-content:center;gap:24px;">
+      <div style="background:#313244;border-radius:8px;padding:10px 20px;font-size:14px;">🖥️ Browser (desktop)</div>
+      <div style="background:#313244;border-radius:8px;padding:10px 20px;font-size:14px;">📱 Browser (mobile)</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:20px;color:#89b4fa;">↕</div>
+
+  <!-- Frontend layer -->
+  <div style="background:var(--card-bg,#1e1e2e);border:2px solid #89b4fa;border-radius:12px;padding:20px;">
+    <div class="label" style="color:#89b4fa;margin-bottom:12px;">FRONTEND — Tutor-GPT fork (Next.js 14)</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">Chat UI (already built)</div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">Session phase indicator</div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">Vocabulary review panel <span style="color:#a6e3a1;font-size:11px;">NEW</span></div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">Session history <span style="color:#a6e3a1;font-size:11px;">NEW</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:20px;color:#89b4fa;">↕</div>
+
+  <!-- API layer -->
+  <div style="background:var(--card-bg,#1e1e2e);border:2px solid #cba6f7;border-radius:12px;padding:20px;">
+    <div class="label" style="color:#cba6f7;margin-bottom:12px;">API LAYER — Next.js API routes</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">/api/chat (existing)</div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">/api/session/start <span style="color:#a6e3a1;font-size:11px;">NEW</span></div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">/api/vocabulary/due <span style="color:#a6e3a1;font-size:11px;">NEW</span></div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">/api/vocabulary/update <span style="color:#a6e3a1;font-size:11px;">NEW</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:20px;color:#89b4fa;">↕</div>
+
+  <!-- Services row -->
+  <div style="display:flex;gap:16px;">
+
+    <div style="flex:1;background:var(--card-bg,#1e1e2e);border:2px solid #f38ba8;border-radius:12px;padding:16px;">
+      <div class="label" style="color:#f38ba8;margin-bottom:10px;">LLM</div>
+      <div style="font-size:13px;line-height:1.8;">
+        GPT-4o or Claude 3.5 Sonnet<br>
+        <span style="color:#a6adc8;">System prompt: Turkish tutor<br>
+        Session phase context<br>
+        Today's vocabulary injected</span>
+      </div>
+    </div>
+
+    <div style="flex:1;background:var(--card-bg,#1e1e2e);border:2px solid #fab387;border-radius:12px;padding:16px;">
+      <div class="label" style="color:#fab387;margin-bottom:10px;">MEMORY</div>
+      <div style="font-size:13px;line-height:1.8;">
+        Honcho (existing)<br>
+        <span style="color:#a6adc8;">Conversation history<br>
+        Long-term learner profile<br>
+        Errors &amp; preferences</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;font-size:20px;color:#89b4fa;">↕</div>
+
+  <!-- Database layer -->
+  <div style="background:var(--card-bg,#1e1e2e);border:2px solid #a6e3a1;border-radius:12px;padding:20px;">
+    <div class="label" style="color:#a6e3a1;margin-bottom:12px;">DATABASE — Supabase (PostgreSQL)</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">users (existing)</div>
+      <div style="background:#313244;border-radius:8px;padding:8px 14px;font-size:13px;">conversations (existing)</div>
+      <div style="background:#a6e3a1;border-radius:8px;padding:8px 14px;font-size:13px;color:#1e1e2e;font-weight:600;">vocabulary_cards NEW</div>
+      <div style="background:#a6e3a1;border-radius:8px;padding:8px 14px;font-size:13px;color:#1e1e2e;font-weight:600;">learning_sessions NEW</div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:#a6adc8;">Green = new tables added in sub-project 1 · FSRS fields already in schema, scheduling logic added in sub-project 2</div>
+  </div>
+
+</div>
