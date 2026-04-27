@@ -14,6 +14,7 @@
     "test:bot-protection": "node tests/arcjet/test-bot-protection.js"
   },
   "dependencies": {
+    "@ai-sdk/google": "^1.2.22",
     "@ai-sdk/openai-compatible": "^0.2.13",
     "@arcjet/next": "1.0.0-beta.8",
     "@mistralai/mistralai": "^1.5.1",

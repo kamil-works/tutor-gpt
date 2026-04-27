@@ -1,38 +1,28 @@
 import { getHonchoApp, getHonchoUser } from '@/utils/honcho';
 import { createClient } from '@/utils/supabase/server';
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import {
   generateText as generateTextAi,
   streamText as streamTextAi,
   streamObject as streamObjectAi,
 } from 'ai';
 import d from 'dedent-js';
-
 import * as Sentry from '@sentry/nextjs';
-import { ZodTypeDef } from 'zod';
-import { ZodType } from 'zod';
+import { ZodTypeDef, ZodType } from 'zod';
 
 export interface Message {
   role: 'user' | 'assistant';
   content: string;
 }
 
-const AI_PROVIDER = process.env.AI_PROVIDER || 'openrouter';
-const AI_API_KEY = process.env.AI_API_KEY;
-const AI_BASE_URL = process.env.AI_BASE_URL || 'https://openrouter.ai/api/v1';
-const MODEL = process.env.MODEL || 'gpt-3.5-turbo';
 const SENTRY_RELEASE = process.env.SENTRY_RELEASE || 'dev';
 const SENTRY_ENVIRONMENT = process.env.SENTRY_ENVIRONMENT || 'local';
 
-const provider = createOpenAICompatible({
-  name: AI_PROVIDER,
-  apiKey: AI_API_KEY,
-  baseURL: AI_BASE_URL,
-  headers: {
-    'HTTP-Referer': 'https://chat.bloombot.ai',
-    'X-Title': 'Bloombot',
-  },
+export const googleAI = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
 });
+
+export const GEMINI_MODEL = 'gemini-2.0-flash';
 
 export async function getUserData() {
   const supabase = await createClient();
@@ -82,9 +72,9 @@ export function streamText(
     };
   }
 ) {
-  const result = streamTextAi({
+  return streamTextAi({
     ...params,
-    model: provider(MODEL),
+    model: googleAI(GEMINI_MODEL),
     experimental_telemetry: {
       isEnabled: true,
       metadata: {
@@ -95,14 +85,7 @@ export function streamText(
         tags: [params.metadata.type],
       },
     },
-    providerOptions: {
-      openrouter: {
-        order: ['DeepInfra', 'Hyperbolic', 'Fireworks', 'Together', 'Lambda'],
-      },
-    },
   });
-
-  return result;
 }
 
 export function streamObject<OBJECT>(
@@ -118,9 +101,9 @@ export function streamObject<OBJECT>(
     };
   }
 ) {
-  const result = streamObjectAi({
+  return streamObjectAi({
     ...params,
-    model: provider(MODEL),
+    model: googleAI(GEMINI_MODEL),
     experimental_telemetry: {
       isEnabled: true,
       metadata: {
@@ -131,19 +114,38 @@ export function streamObject<OBJECT>(
         tags: [params.metadata.type],
       },
     },
-    providerOptions: {
-      openrouter: {
-        order: ['DeepInfra', 'Hyperbolic', 'Fireworks', 'Together', 'Lambda'],
+  });
+}
+
+export function generateText(
+  params: Omit<
+    Parameters<typeof generateTextAi>[0],
+    'model' | 'experimental_telemetry'
+  > & {
+    metadata: {
+      sessionId: string;
+      userId: string;
+      type: string;
+    };
+  }
+) {
+  return generateTextAi({
+    ...params,
+    model: googleAI(GEMINI_MODEL),
+    experimental_telemetry: {
+      isEnabled: true,
+      metadata: {
+        sessionId: params.metadata.sessionId,
+        userId: params.metadata.userId,
+        release: SENTRY_RELEASE,
+        environment: SENTRY_ENVIRONMENT,
+        tags: [params.metadata.type],
       },
     },
   });
-
-  return result;
 }
 
-/**
- * @deprecated Use generateText instead
- */
+/** @deprecated Use generateText instead */
 export async function createCompletion(
   messages: Message[],
   metadata: {
@@ -160,60 +162,9 @@ export async function createCompletion(
   }
 ) {
   const result = await generateTextAi({
-    model: provider(MODEL),
+    model: googleAI(GEMINI_MODEL),
     messages,
     ...parameters,
-    experimental_telemetry: {
-      isEnabled: true,
-      metadata: {
-        sessionId: metadata.sessionId,
-        userId: metadata.userId,
-        release: SENTRY_RELEASE,
-        environment: SENTRY_ENVIRONMENT,
-        tags: [metadata.type],
-      },
-    },
-    providerOptions: {
-      openrouter: {
-        order: ['DeepInfra', 'Hyperbolic', 'Fireworks', 'Together', 'Lambda'],
-      },
-    },
   });
-
   return result.text;
-}
-
-export function generateText(
-  params: Omit<
-    Parameters<typeof generateTextAi>[0],
-    'model' | 'experimental_telemetry'
-  > & {
-    metadata: {
-      sessionId: string;
-      userId: string;
-      type: string;
-    };
-  }
-) {
-  const result = generateTextAi({
-    ...params,
-    model: provider(MODEL),
-    experimental_telemetry: {
-      isEnabled: true,
-      metadata: {
-        sessionId: params.metadata.sessionId,
-        userId: params.metadata.userId,
-        release: SENTRY_RELEASE,
-        environment: SENTRY_ENVIRONMENT,
-        tags: [params.metadata.type],
-      },
-    },
-    providerOptions: {
-      openrouter: {
-        order: ['DeepInfra', 'Hyperbolic', 'Fireworks', 'Together', 'Lambda'],
-      },
-    },
-  });
-
-  return result;
 }
