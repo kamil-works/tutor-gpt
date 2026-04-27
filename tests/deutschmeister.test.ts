@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { buildDeutschMeisterSystemPrompt, type SessionContext } from '@/utils/prompts/deutschmeister';
 import { getNextLessonTopic, A1_LESSON_PROGRESSION } from '@/utils/lessons';
+import { renderArticles } from '@/components/ArticleRenderer';
 
 describe('buildDeutschMeisterSystemPrompt', () => {
   const ctx: SessionContext = {
@@ -55,5 +56,29 @@ describe('getNextLessonTopic', () => {
 
   it('returns first topic for unknown lastTopic', () => {
     expect(getNextLessonTopic('Bilinmeyen')).toBe('Selamlaşma');
+  });
+});
+
+describe('renderArticles', () => {
+  it('replaces 🔵 der with a blue badge', () => {
+    const result = renderArticles('Das ist 🔵 der Hund.');
+    const str = JSON.stringify(result);
+    expect(str).toContain('der');
+    expect(str).toContain('#1e40af');
+  });
+
+  it('replaces 🔴 die with a red badge', () => {
+    const result = renderArticles('Das ist 🔴 die Katze.');
+    expect(JSON.stringify(result)).toContain('#b91c1c');
+  });
+
+  it('replaces 🟢 das with a green badge', () => {
+    const result = renderArticles('Das ist 🟢 das Buch.');
+    expect(JSON.stringify(result)).toContain('#15803d');
+  });
+
+  it('leaves plain text unchanged', () => {
+    const result = renderArticles('Kein Artikel hier.');
+    expect(result).toEqual(['Kein Artikel hier.']);
   });
 });

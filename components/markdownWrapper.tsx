@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 import { FiCopy, FiCheck } from 'react-icons/fi';
 
@@ -110,7 +111,7 @@ const MarkdownWrapper = memo(({ text }: MarkdownWrapperProps) => {
 
   // Memoize plugins
   const remarkPlugins = useMemo(() => [remarkMath] as Array<any>, []);
-  const rehypePlugins = useMemo(() => [rehypeKatex] as Array<any>, []);
+  const rehypePlugins = useMemo(() => [rehypeKatex, rehypeRaw] as Array<any>, []);
 
   if (!text) return null;
 

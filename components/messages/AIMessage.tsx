@@ -4,6 +4,7 @@ import { LuThumbsUp, LuThumbsDown, LuClipboard, LuCheck } from 'react-icons/lu';
 import MarkdownWrapper from '../markdownWrapper';
 import Spinner from '../spinner';
 import ThinkBox from '../ThinkBox';
+import { processArticlesForMarkdown } from '@/components/ArticleRenderer';
 
 export type Reaction = 'thumbs_up' | 'thumbs_down' | null;
 
@@ -62,7 +63,7 @@ function AIMessage({
 
       {/* AI message content - no background, just text on page background */}
       <div className="text-foreground mb-3">
-        <MarkdownWrapper text={content} />
+        <MarkdownWrapper text={processArticlesForMarkdown(content)} />
       </div>
 
       {/* Action buttons for AI messages */}
