@@ -41,3 +41,11 @@ export interface ConversationHistory {
   summaries: MetaMessage[];
   collectionId?: string;
 }
+
+export interface SessionContext {
+  lessonTopic: string;
+  lastTopic: string | null;
+  knownCount: number;
+  dueCount: number;
+  anxietySignal: 'low' | 'medium' | 'high';
+}
