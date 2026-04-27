@@ -31,6 +31,7 @@ import { ParsedFile } from '@/utils/parseFiles';
 import useAutoScroll from '@/hooks/autoscroll';
 import MessageList from '@/components/MessageList';
 import SessionPhaseIndicator from '@/components/SessionPhaseIndicator';
+import VocabularyPanel from '@/components/VocabularyPanel';
 import { MessageListRef } from '@/components/MessageList';
 import { Reaction } from '@/components/messages/AIMessage';
 import {
@@ -1153,6 +1154,14 @@ What's on your mind? Let's dive in. 🌱`,
             </div>
           </div>
         </ResizablePanel>
+        {!isMobile && (
+          <>
+            <ResizableHandle />
+            <ResizablePanel defaultSize={22} minSize={15} maxSize={35}>
+              <VocabularyPanel />
+            </ResizablePanel>
+          </>
+        )}
       </ResizablePanelGroup>
 
       {/* Mobile Sidebar Overlay */}
