@@ -1,173 +1,74 @@
-import { honcho } from '@/utils/honcho';
+import { createClient } from '@/utils/supabase/server';
 import { ConversationHistory } from './types';
 
-// Constants
 export const MAX_CONTEXT_SIZE = 11;
 export const SUMMARY_SIZE = 5;
 
 export async function fetchConversationHistory(
-  appId: string,
+  _appId: string,
   userId: string,
   conversationId: string
 ): Promise<ConversationHistory> {
-  const [
-    messageIter,
-    thoughtIter,
-    honchoIter,
-    pdfIter,
-    summaryIter,
-    collectionIter,
-  ] = await Promise.all([
-    honcho.apps.users.sessions.messages.list(appId, userId, conversationId, {
-      reverse: true,
-      size: MAX_CONTEXT_SIZE,
-    }),
-    honcho.apps.users.metamessages.list(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        metamessage_type: 'thought',
-        reverse: true,
-        size: MAX_CONTEXT_SIZE,
-      }
-    ),
-    honcho.apps.users.metamessages.list(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        metamessage_type: 'honcho',
-        reverse: true,
-        size: MAX_CONTEXT_SIZE,
-      }
-    ),
-    honcho.apps.users.metamessages.list(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        metamessage_type: 'pdf',
-        reverse: true,
-        size: MAX_CONTEXT_SIZE,
-      }
-    ),
-    honcho.apps.users.metamessages.list(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        metamessage_type: 'summary',
-        reverse: true,
-        size: 1,
-      }
-    ),
-    honcho.apps.users.metamessages.list(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        metamessage_type: 'collection',
-        reverse: true,
-        size: 1,
-      }
-    ),
-  ]);
+  const supabase = await createClient();
+
+  const { data } = await supabase
+    .from('messages')
+    .select('id, is_user, content, metadata')
+    .eq('conversation_id', conversationId)
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+    .limit(MAX_CONTEXT_SIZE);
+
+  const messages = (data ?? []).reverse().map((m) => ({
+    id: m.id,
+    is_user: m.is_user,
+    content: m.content,
+  }));
 
   return {
-    messages: Array.from(messageIter.items || []).reverse(),
-    thoughts: Array.from(thoughtIter.items || []).reverse(),
-    honchoMessages: Array.from(honchoIter.items || []).reverse(),
-    pdfMessages: Array.from(pdfIter.items || []).reverse(),
-    summaries: Array.from(summaryIter.items || []),
-    collectionId: collectionIter.items?.[0]?.content,
+    messages,
+    thoughts: [],
+    honchoMessages: [],
+    pdfMessages: [],
+    summaries: [],
+    collectionId: undefined,
   };
 }
 
 export async function saveConversation(
-  appId: string,
+  _appId: string,
   userId: string,
   conversationId: string,
   userMessage: string,
-  thought: string,
-  honchoContent: string,
-  pdfContent: string,
+  _thought: string,
+  _honchoContent: string,
+  _pdfContent: string,
   response: string,
-  collectionId?: string
+  _collectionId?: string
 ) {
-  // Save the user message and related metamessages
-  const newUserMessage = await honcho.apps.users.sessions.messages.create(
-    appId,
-    userId,
-    conversationId,
+  const supabase = await createClient();
+
+  await supabase.from('messages').insert([
     {
+      conversation_id: conversationId,
+      user_id: userId,
       is_user: true,
       content: userMessage,
-    }
-  );
-
-  // Save the thought metamessage
-  await honcho.apps.users.metamessages.create(
-    appId,
-    userId,
+      metadata: {},
+    },
     {
-      session_id: conversationId,
-      message_id: newUserMessage.id,
-      metamessage_type: 'thought',
-      content: thought || '',
-      metadata: { type: 'assistant' },
-    }
-  );
-
-  // Save honcho metamessage
-  await honcho.apps.users.metamessages.create(
-    appId,
-    userId,
-    {
-      session_id: conversationId,
-      message_id: newUserMessage.id,
-      metamessage_type: 'honcho',
-      content: honchoContent || '',
-      metadata: { type: 'assistant' },
-    }
-  );
-
-  // Save PDF metamessage
-  await honcho.apps.users.metamessages.create(
-    appId,
-    userId,
-    {
-      session_id: conversationId,
-      message_id: newUserMessage.id,
-      metamessage_type: 'pdf',
-      content: pdfContent || '',
-      metadata: { type: 'assistant' },
-    }
-  );
-
-  // Save collection ID metamessage if available
-  if (collectionId) {
-    await honcho.apps.users.metamessages.create(
-      appId,
-      userId,
-      {
-        session_id: conversationId,
-        message_id: newUserMessage.id,
-        metamessage_type: 'collection',
-        content: collectionId,
-        metadata: { type: 'assistant' },
-      }
-    );
-  }
-
-  // Save the assistant response
-  await honcho.apps.users.sessions.messages.create(
-    appId,
-    userId,
-    conversationId,
-    {
+      conversation_id: conversationId,
+      user_id: userId,
       is_user: false,
       content: response,
-    }
-  );
+      metadata: {},
+    },
+  ]);
+
+  // Keep conversation updated_at fresh
+  await supabase
+    .from('conversations')
+    .update({ updated_at: new Date().toISOString() })
+    .eq('id', conversationId)
+    .eq('user_id', userId);
 }

@@ -1,127 +1,85 @@
 'use server';
 
 import { createClient } from '@/utils/supabase/server';
-import { honcho, getHonchoApp, getHonchoUser } from '@/utils/honcho';
 import * as Sentry from '@sentry/nextjs';
 import { Conversation } from '@/utils/types';
 
-// TODO add proper authorization check
-
-export async function getConversations() {
+export async function getConversations(): Promise<Conversation[]> {
   return Sentry.startSpan(
     { name: 'server-action.getConversations', op: 'server.action' },
     async () => {
       const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('Unauthorized');
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const { data, error } = await supabase
+        .from('conversations')
+        .select('id, name')
+        .eq('user_id', user.id)
+        .eq('is_active', true)
+        .order('updated_at', { ascending: false });
 
-      if (!user) {
-        throw new Error('Unauthorized');
-      }
-
-      const honchoApp = await getHonchoApp();
-      const honchoUser = await getHonchoUser(user.id);
-
-      const acc = [];
-      for await (const convo of honcho.apps.users.sessions.list(
-        honchoApp.id,
-        honchoUser.id,
-        { is_active: true, reverse: true }
-      )) {
-        const name = (convo.metadata?.name as string) ?? 'Untitled';
-        const instance: Conversation = {
-          conversationId: convo.id,
-          name,
-        };
-        acc.push(instance);
-      }
-      return acc;
+      if (error) throw error;
+      return (data ?? []).map((c) => ({ conversationId: c.id, name: c.name }));
     }
   );
 }
 
-export async function createConversation() {
+export async function createConversation(): Promise<Conversation> {
   return Sentry.startSpan(
     { name: 'server-action.createConversation', op: 'server.action' },
     async () => {
       const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('Unauthorized');
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const { data, error } = await supabase
+        .from('conversations')
+        .insert({ user_id: user.id, name: 'Untitled' })
+        .select('id, name')
+        .single();
 
-      if (!user) {
-        throw new Error('Unauthorized');
-      }
-
-      const honchoApp = await getHonchoApp();
-      const honchoUser = await getHonchoUser(user.id);
-
-      const session = await honcho.apps.users.sessions.create(
-        honchoApp.id,
-        honchoUser.id,
-        {}
-      );
-
-      return { conversationId: session.id, name: 'Untitled' };
+      if (error) throw error;
+      return { conversationId: data.id, name: data.name };
     }
   );
 }
 
-export async function deleteConversation(conversationId: string) {
+export async function deleteConversation(conversationId: string): Promise<boolean> {
   return Sentry.startSpan(
     { name: 'server-action.deleteConversation', op: 'server.action' },
     async () => {
       const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('Unauthorized');
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const { error } = await supabase
+        .from('conversations')
+        .update({ is_active: false })
+        .eq('id', conversationId)
+        .eq('user_id', user.id);
 
-      if (!user) {
-        throw new Error('Unauthorized');
-      }
-
-      const honchoApp = await getHonchoApp();
-      const honchoUser = await getHonchoUser(user.id);
-
-      await honcho.apps.users.sessions.delete(
-        honchoApp.id,
-        honchoUser.id,
-        conversationId
-      );
-
+      if (error) throw error;
       return true;
     }
   );
 }
 
-export async function updateConversation(conversationId: string, name: string) {
+export async function updateConversation(conversationId: string, name: string): Promise<boolean> {
   return Sentry.startSpan(
     { name: 'server-action.updateConversation', op: 'server.action' },
     async () => {
       const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('Unauthorized');
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const { error } = await supabase
+        .from('conversations')
+        .update({ name, updated_at: new Date().toISOString() })
+        .eq('id', conversationId)
+        .eq('user_id', user.id);
 
-      if (!user) {
-        throw new Error('Unauthorized');
-      }
-
-      const honchoApp = await getHonchoApp();
-      const honchoUser = await getHonchoUser(user.id);
-
-      await honcho.apps.users.sessions.update(
-        honchoApp.id,
-        honchoUser.id,
-        conversationId,
-        { metadata: { name } }
-      );
-
+      if (error) throw error;
       return true;
     }
   );

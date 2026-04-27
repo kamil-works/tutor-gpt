@@ -36,16 +36,18 @@ export async function signup(formData: FormData) {
 
   const req = await request();
 
-  const decision = await siteSignupProtectionClient.protect(req, {
-    email: data.email,
-  });
+  if (siteSignupProtectionClient) {
+    const decision = await siteSignupProtectionClient.protect(req, {
+      email: data.email,
+    });
 
-  if (decision.isDenied()) {
-    console.log("Decision", decision);
-    if (decision.reason.isEmail()) {
-      return "Invalid Email";
+    if (decision.isDenied()) {
+      console.log("Decision", decision);
+      if (decision.reason.isEmail()) {
+        return "Invalid Email";
+      }
+      return "Forbidden";
     }
-    return "Forbidden";
   }
 
   const supabase = await createClient();

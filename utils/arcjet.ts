@@ -6,12 +6,13 @@ import arcjet, {
 } from "@arcjet/next";
 import { captureException } from "@sentry/nextjs";
 
-// Validate ARCJET_KEY is available at module load time
 const ARCJET_KEY = process.env.ARCJET_KEY;
-if (!ARCJET_KEY) {
-	throw new Error(
-		"ARCJET_KEY environment variable is required. Please add it to your .env.local file.\n",
-	);
+const ARCJET_DISABLED = !ARCJET_KEY;
+
+// Allow-all stubs used when ARCJET_KEY is not configured (local dev)
+const allowAll = { allowed: true } as const;
+if (ARCJET_DISABLED) {
+	console.warn("⚠️  ARCJET_KEY not set — security checks disabled (local dev mode)");
 }
 
 /**
@@ -40,33 +41,24 @@ function logBotProtectionEvent(
 	});
 }
 
-/**
- * Main Arcjet client for global bot protection
- */
-const aj = arcjet({
-	key: ARCJET_KEY,
+const aj = ARCJET_DISABLED ? null : arcjet({
+	key: ARCJET_KEY!,
 	rules: [
 		detectBot({
 			mode: "LIVE",
-			// Allow search engines but block all other bots
 			allow: ["CATEGORY:SEARCH_ENGINE"],
 		}),
 	],
 });
 
-/**
- * Arcjet client specifically for chat endpoint rate limiting
- */
-const chatRateLimitClient = arcjet({
-	key: ARCJET_KEY,
-	characteristics: ["ip.src"], // Track by IP address
+const chatRateLimitClient = ARCJET_DISABLED ? null : arcjet({
+	key: ARCJET_KEY!,
+	characteristics: ["ip.src"],
 	rules: [
-		// Allow search engines but block other bots
 		detectBot({
 			mode: "LIVE",
 			allow: ["CATEGORY:SEARCH_ENGINE"],
 		}),
-		// Rate limit: 8 requests per minute
 		fixedWindow({
 			mode: "LIVE",
 			window: "1m",
@@ -75,21 +67,17 @@ const chatRateLimitClient = arcjet({
 	],
 });
 
-/**
- * Arcjet client for WAF protection on chat endpoints
- */
-const chatWAFClient = arcjet({
-	key: ARCJET_KEY,
+const chatWAFClient = ARCJET_DISABLED ? null : arcjet({
+	key: ARCJET_KEY!,
 	rules: [
-		// Shield WAF protection
 		shield({
 			mode: "LIVE",
 		}),
 	],
 });
 
-export const siteSignupProtectionClient = arcjet({
-	key: ARCJET_KEY,
+export const siteSignupProtectionClient = ARCJET_DISABLED ? null : arcjet({
+	key: ARCJET_KEY!,
 	rules: [
 		protectSignup({
 			email: {
@@ -116,8 +104,8 @@ export async function checkBotProtection(request: Request): Promise<{
 	allowed: boolean;
 	reason?: string;
 }> {
+	if (ARCJET_DISABLED || !aj) return allowAll;
 	try {
-		// Run Arcjet bot detection (includes built-in search engine allowlist)
 		const decision = await aj.protect(request);
 
 		// Log result
@@ -156,9 +144,8 @@ export async function checkChatRateLimit(request: Request): Promise<{
 	remaining?: number;
 	resetTime?: number;
 }> {
+	if (ARCJET_DISABLED || !chatRateLimitClient) return allowAll;
 	try {
-		// Run Arcjet protection (bot detection + rate limiting)
-		// Search engines are automatically allowed via CATEGORY:SEARCH_ENGINE
 		const decision = await chatRateLimitClient.protect(request);
 
 		// Extract rate limiting information from decision
@@ -235,8 +222,8 @@ export async function checkChatWAF(request: Request): Promise<{
 	allowed: boolean;
 	reason?: string;
 }> {
+	if (ARCJET_DISABLED || !chatWAFClient) return allowAll;
 	try {
-		// Run Arcjet Shield WAF protection
 		const decision = await chatWAFClient.protect(request);
 
 		// Log the decision

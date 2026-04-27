@@ -24,7 +24,7 @@ const getCSPDirectives = () => {
     "frame-src 'self' https://vercel.live https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com https://connect.stripe.com",
     // Supabase connectivity
     isDevelopment
-      ? "connect-src 'self' http://127.0.0.1:54321 https://vitals.vercel-insights.com https://*.posthog.com https://vercel.live https://js.stripe.com https://checkout.stripe.com"
+      ? "connect-src 'self' http://127.0.0.1:54321 https://*.supabase.co https://*.supabase.net https://vitals.vercel-insights.com https://*.posthog.com https://vercel.live https://js.stripe.com https://checkout.stripe.com"
       : "connect-src 'self' https://*.supabase.co https://*.supabase.net https://vitals.vercel-insights.com https://*.posthog.com https://vercel.live https://js.stripe.com https://checkout.stripe.com",
     // Frame security
     "frame-ancestors 'none'",

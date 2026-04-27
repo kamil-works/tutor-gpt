@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { after } from 'next/server';
-import { honcho } from '@/utils/honcho';
 import { ChatCallProps } from './types';
 import { formatStreamChunk } from '@/utils/ai/stream';
 import { validateUser } from '@/utils/ai/validation';
@@ -24,36 +23,24 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
   const { userData } = userValidation;
   if (!userData) return new NextResponse('User data not found', { status: 500 });
 
-  const { appId, userId } = userData;
+  const { userId } = userData;
 
-  const [{ messages: messageHistory, honchoMessages: honchoHistory, summaries: summaryHistory }, sessionContext] =
+  const [{ messages: messageHistory, summaries: summaryHistory }, sessionContext] =
     await Promise.all([
-      fetchConversationHistory(appId, userId, conversationId),
+      fetchConversationHistory('', userId, conversationId),
       getSessionContext(userId, conversationId),
     ]);
-
-  const { content: honchoContent } = await honcho.apps.users.sessions.chat(
-    appId,
-    userId,
-    conversationId,
-    { queries: 'Bu öğrencinin Almanca öğrenme geçmişi, bildiği kelimeler ve yaptığı hatalar nelerdir?' }
-  );
 
   const conversationMessages = messageHistory.map((m) => ({
     role: m.is_user ? ('user' as const) : ('assistant' as const),
     content: m.content,
   }));
 
-  conversationMessages.push({
-    role: 'user',
-    content: honchoContent
-      ? `<learner_profile>${honchoContent}</learner_profile>\n${message}`
-      : message,
-  });
+  conversationMessages.push({ role: 'user', content: message });
 
   const lastSummary = summaryHistory[0]?.content;
   after(async () => {
-    await checkAndGenerateSummary(appId, userId, conversationId, messageHistory, summaryHistory, lastSummary);
+    await checkAndGenerateSummary('', userId, conversationId, messageHistory, summaryHistory, lastSummary);
   });
 
   const { textStream } = streamText({
@@ -104,9 +91,7 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
     yield formatStreamChunk({ type: 'response', text: chunk });
   }
 
-  await saveConversation(
-    appId, userId, conversationId, message, '', honchoContent, '', response, undefined
-  );
+  await saveConversation('', userId, conversationId, message, '', '', '', response);
 
   return new NextResponse(response);
 }

@@ -1,33 +1,12 @@
-import { Honcho } from 'honcho-ai';
-import { unstable_cache } from 'next/cache';
+// Honcho stubs — conversation/message storage migrated to Supabase.
+// This file only exists to satisfy imports that haven't been removed yet.
 
-export const honcho = new Honcho({
-  baseURL: process.env.HONCHO_URL!,
-});
+export const honcho = {} as any;
 
-export const getHonchoApp = unstable_cache(
-  async () => {
-    return await honcho.apps.getOrCreate(process.env.HONCHO_APP_NAME!, {
-      timeout: 5 * 1000,
-      maxRetries: 5,
-    });
-  },
-  [],
-  {
-    revalidate: 300, // 5 minutes
-  }
-);
+export async function getHonchoApp() {
+  return { id: 'deutschmeister' };
+}
 
-export const getHonchoUser = unstable_cache(
-  async (userId: string) => {
-    const app = await getHonchoApp();
-    return await honcho.apps.users.getOrCreate(app.id, userId, {
-      timeout: 5 * 1000,
-      maxRetries: 5,
-    });
-  },
-  [],
-  {
-    revalidate: 300,
-  }
-);
+export async function getHonchoUser(userId: string) {
+  return { id: userId };
+}
