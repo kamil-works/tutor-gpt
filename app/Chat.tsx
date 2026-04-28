@@ -30,7 +30,6 @@ import { ParsedFile } from '@/utils/parseFiles';
 
 import useAutoScroll from '@/hooks/autoscroll';
 import MessageList from '@/components/MessageList';
-import SessionPhaseIndicator from '@/components/SessionPhaseIndicator';
 import VocabularyPanel from '@/components/VocabularyPanel';
 import { MessageListRef } from '@/components/MessageList';
 import { Reaction } from '@/components/messages/AIMessage';
@@ -268,8 +267,6 @@ export default function Chat({
 }: ChatProps) {
   const [userId] = useState(initialUserId);
   const [isSubscribed] = useState(initialChatAccess.isSubscribed);
-  const [sessionPhase, setSessionPhase] = useState<'warmup' | 'lesson' | 'conversation' | null>(null);
-  const [sessionTopic, setSessionTopic] = useState<string>('');
   const [freeMessages, setFreeMessages] = useState(
     initialChatAccess.freeMessages
   );
@@ -507,20 +504,6 @@ What's on your mind? Let's dive in. 🌱`,
     setIsDark(checked);
   };
 
-  const startSession = async (convId: string) => {
-    try {
-      const res = await fetch('/api/session/start', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ conversationId: convId }),
-      });
-      const data = await res.json();
-      setSessionPhase('warmup');
-      setSessionTopic(data.lessonTopic ?? '');
-    } catch {
-      // non-critical — session tracking fails silently
-    }
-  };
 
   async function addChat() {
     // Create a temporary conversation with a loading state
@@ -544,9 +527,6 @@ What's on your mind? Let's dive in. 🌱`,
         ...conversations!.filter((c) => c.conversationId !== tempId),
       ]);
       setConversationId(newConversation?.conversationId);
-      if (newConversation?.conversationId) {
-        startSession(newConversation.conversationId);
-      }
     } catch (error) {
       // Remove temporary conversation on error
       mutateConversations(conversations!);
@@ -1013,7 +993,6 @@ What's on your mind? Let's dive in. 🌱`,
                   </button>
                 </div>
               </div>
-              <SessionPhaseIndicator phase={sessionPhase} lessonTopic={sessionTopic} />
               <MessageList
                 ref={messageListRef}
                 messages={messages}
