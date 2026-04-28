@@ -8,7 +8,7 @@ import { checkAndGenerateSummary } from '@/utils/ai/summary';
 import { googleAI, GEMINI_MODEL } from '@/utils/ai';
 import { streamText, tool } from 'ai';
 import { z } from 'zod';
-import { getVocabularyWord, getDueWords, updateWordReview } from '@/utils/vocabulary';
+import { getNextWord, updateLastWordReview } from '@/utils/vocabulary';
 import { getSessionContext } from '@/utils/sessions';
 import { buildDeutschMeisterSystemPrompt } from '@/utils/prompts/deutschmeister';
 
@@ -16,7 +16,9 @@ const SENTRY_RELEASE = process.env.SENTRY_RELEASE || 'dev';
 const SENTRY_ENVIRONMENT = process.env.SENTRY_ENVIRONMENT || 'local';
 
 export async function* respond({ message, conversationId }: ChatCallProps) {
+  console.log('[respond] start, model:', GEMINI_MODEL);
   const userValidation = await validateUser();
+  console.log('[respond] validation:', userValidation.isAuthorized, (userValidation as any).error ?? 'ok');
   if (!userValidation.isAuthorized) {
     return new NextResponse(userValidation.error, { status: userValidation.status });
   }
@@ -24,6 +26,7 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
   if (!userData) return new NextResponse('User data not found', { status: 500 });
 
   const { userId } = userData;
+  console.log('[respond] userId:', userId.slice(0, 8) + '...');
 
   const [{ messages: messageHistory, summaries: summaryHistory }, sessionContext] =
     await Promise.all([
@@ -39,59 +42,63 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
   conversationMessages.push({ role: 'user', content: message });
 
   const lastSummary = summaryHistory[0]?.content;
+  // Declared early so the after() closure captures it by reference; fully populated by the time after() runs
+  let response = '';
   after(async () => {
+    await saveConversation('', userId, conversationId, message, '', '', '', response);
     await checkAndGenerateSummary('', userId, conversationId, messageHistory, summaryHistory, lastSummary);
   });
-
-  const { textStream } = streamText({
-    model: googleAI(GEMINI_MODEL),
-    system: buildDeutschMeisterSystemPrompt(sessionContext),
-    messages: conversationMessages,
-    maxSteps: 5,
-    experimental_telemetry: {
-      isEnabled: true,
-      metadata: {
-        sessionId: conversationId,
-        userId,
-        release: SENTRY_RELEASE,
-        environment: SENTRY_ENVIRONMENT,
-        tags: ['response'],
+  try {
+    const result = streamText({
+      model: googleAI(GEMINI_MODEL),
+      system: buildDeutschMeisterSystemPrompt(sessionContext),
+      messages: conversationMessages,
+      maxSteps: 5,
+      experimental_telemetry: {
+        isEnabled: true,
+        metadata: { sessionId: conversationId, userId, release: SENTRY_RELEASE, environment: SENTRY_ENVIRONMENT, tags: ['response'] },
       },
-    },
-    tools: {
-      get_vocabulary_word: tool({
-        description: 'Fetch a vocabulary word from the database. MUST be called before teaching any German word.',
-        parameters: z.object({
-          level: z.enum(['A1']).describe('CEFR level'),
-          topic: z.string().optional().describe('Optional topic filter'),
+      tools: {
+        get_next_word: tool({
+          description: 'Get the next vocabulary word to teach. Returns an overdue review word first, then a new word. MUST be called before teaching any word.',
+          parameters: z.object({}),
+          execute: async () => {
+            console.log('[tool] get_next_word');
+            return getNextWord(userId, conversationId);
+          },
         }),
-        execute: async ({ level, topic }) => getVocabularyWord(userId, level, topic),
-      }),
-      get_due_words: tool({
-        description: 'Fetch vocabulary cards due for review today. Call at the start of warmup phase.',
-        parameters: z.object({
-          limit: z.number().default(8).describe('Max number of cards to return'),
+        update_last_word_review: tool({
+          description: 'Rate the last word shown after user responds. Call immediately after any user response to a word.',
+          parameters: z.object({
+            rating: z.number().describe('1=wrong/no idea, 2=hard/needs practice, 3=good/mostly right, 4=easy/perfect'),
+          }),
+          execute: async ({ rating }) => {
+            console.log('[tool] update_last_word_review, rating:', rating);
+            return updateLastWordReview(userId, conversationId, rating as 1 | 2 | 3 | 4);
+          },
         }),
-        execute: async ({ limit }) => getDueWords(userId, limit),
-      }),
-      update_word_review: tool({
-        description: 'Update a card review status after user responds. rating: 1=wrong, 2=hard, 3=good, 4=easy.',
-        parameters: z.object({
-          word_id: z.string().describe('The card_id of the vocabulary card'),
-          rating: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
-        }),
-        execute: async ({ word_id, rating }) => updateWordReview(word_id, rating),
-      }),
-    },
-  });
+      },
+    });
 
-  let response = '';
-  for await (const chunk of textStream) {
-    response += chunk;
-    yield formatStreamChunk({ type: 'response', text: chunk });
+    for await (const part of result.fullStream) {
+      if (part.type === 'text-delta') {
+        response += part.textDelta;
+        yield formatStreamChunk({ type: 'response', text: part.textDelta });
+      } else if (part.type === 'tool-call') {
+        console.log('[respond] tool-call:', part.toolName, JSON.stringify(part.args));
+      } else if (part.type === 'tool-result') {
+        console.log('[respond] tool-result:', part.toolName, JSON.stringify(part.result).slice(0, 120));
+      } else if (part.type === 'error') {
+        console.error('[respond] stream error part:', part.error);
+      } else if (part.type === 'finish') {
+        console.log('[respond] finish, stopReason:', part.finishReason, 'steps:', (part as any).experimental_providerMetadata?.google);
+      }
+    }
+  } catch (err) {
+    console.error('[respond] fullStream error:', err);
+    throw err;
   }
-
-  await saveConversation('', userId, conversationId, message, '', '', '', response);
+  console.log('[respond] done, response length:', response.length);
 
   return new NextResponse(response);
 }
