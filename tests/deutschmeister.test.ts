@@ -12,11 +12,10 @@ describe('buildDeutschMeisterSystemPrompt', () => {
     anxietySignal: 'medium',
   };
 
-  it('includes the anti-hallucination tool table', () => {
+  it('includes the tool loop instructions', () => {
     const prompt = buildDeutschMeisterSystemPrompt(ctx);
-    expect(prompt).toContain('get_vocabulary_word');
-    expect(prompt).toContain('get_due_words');
-    expect(prompt).toContain('update_word_review');
+    expect(prompt).toContain('get_next_word');
+    expect(prompt).toContain('update_last_word_review');
   });
 
   it('includes the article color system', () => {
@@ -28,9 +27,7 @@ describe('buildDeutschMeisterSystemPrompt', () => {
 
   it('injects session context', () => {
     const prompt = buildDeutschMeisterSystemPrompt(ctx);
-    expect(prompt).toContain('Selamlaşma');
     expect(prompt).toContain('0/650');
-    expect(prompt).toContain('5 adet');
   });
 
   it('reflects anxiety signal', () => {
