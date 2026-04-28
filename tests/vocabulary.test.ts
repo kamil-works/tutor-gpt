@@ -20,7 +20,7 @@ vi.mock('@/utils/supabase/server', () => ({
   }),
 }));
 
-import { getVocabularyWord, getDueWords, updateWordReview } from '@/utils/vocabulary';
+import { getVocabularyWord, getDueWords, updateWordReview, getNextWord } from '@/utils/vocabulary';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -103,5 +103,56 @@ describe('updateWordReview', () => {
 
     const result = await updateWordReview('card-1', 4);
     expect(result.status).toBe('known');
+  });
+});
+
+describe('getNextWord', () => {
+  it('returns due word when seen/struggling word is overdue', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: {
+        card_id: 'due-1',
+        word: 'rot',
+        article: '—',
+        translation_tr: 'kırmızı',
+        example_sentence: 'Rot.',
+        topic: 'Renkler',
+        pos: 'adjective',
+        status: 'seen',
+      },
+      error: null,
+    });
+
+    const result = await getNextWord('user-1');
+    expect(result).not.toBeNull();
+    expect(result?.card_id).toBe('due-1');
+  });
+
+  it('returns new word when no due words exist', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({ data: null, error: { message: 'no rows' } });
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: {
+        card_id: 'new-1',
+        word: 'blau',
+        article: '—',
+        translation_tr: 'mavi',
+        example_sentence: 'Blau.',
+        topic: 'Renkler',
+        pos: 'adjective',
+        status: 'new',
+      },
+      error: null,
+    });
+
+    const result = await getNextWord('user-1');
+    expect(result).not.toBeNull();
+    expect(result?.card_id).toBe('new-1');
+  });
+
+  it('returns null when no words available', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({ data: null, error: { message: 'no rows' } });
+    mocks.chainable.single.mockResolvedValueOnce({ data: null, error: { message: 'no rows' } });
+
+    const result = await getNextWord('user-1');
+    expect(result).toBeNull();
   });
 });
