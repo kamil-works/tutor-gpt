@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AIMessage as AIMessageType } from '@/utils/types';
 import { LuThumbsUp, LuThumbsDown, LuClipboard, LuCheck } from 'react-icons/lu';
 import MarkdownWrapper from '../markdownWrapper';
@@ -27,6 +27,8 @@ function AIMessage({
   const reaction = (metadata?.reaction as Reaction) || null;
   const shouldShowButtons = messageId !== '';
   const [isCopied, setIsCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   // Check if we should show the ThinkBox
   // Show for AI messages that either have thinking data OR are being streamed (empty content with thinking object)
@@ -67,7 +69,7 @@ function AIMessage({
       </div>
 
       {/* Action buttons for AI messages */}
-      {!messagesLoading && shouldShowButtons && (
+      {mounted && !messagesLoading && shouldShowButtons && (
         <div className="flex flex-col gap-2">
           <div className="flex justify-start gap-4">
             <button

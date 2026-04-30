@@ -1,22 +1,4002 @@
 [
-  { "word": "Guten Morgen", "article": "—", "translation_tr": "Günaydın", "example_sentence": "Guten Morgen! Wie geht es Ihnen?", "topic": "Selamlaşma", "pos": "phrase" },
-  { "word": "Hallo", "article": "—", "translation_tr": "Merhaba", "example_sentence": "Hallo, ich bin Anna.", "topic": "Selamlaşma", "pos": "interjection" },
-  { "word": "Auf Wiedersehen", "article": "—", "translation_tr": "Görüşürüz", "example_sentence": "Auf Wiedersehen! Bis morgen.", "topic": "Selamlaşma", "pos": "phrase" },
-  { "word": "Guten Tag", "article": "—", "translation_tr": "İyi günler", "example_sentence": "Guten Tag, mein Name ist Schmidt.", "topic": "Selamlaşma", "pos": "phrase" },
-  { "word": "Tschüss", "article": "—", "translation_tr": "Hoşça kal (günlük)", "example_sentence": "Tschüss! Bis später.", "topic": "Selamlaşma", "pos": "interjection" },
-  { "word": "Name", "article": "der", "translation_tr": "isim, ad", "example_sentence": "Mein Name ist Thomas.", "topic": "Kendini tanıtma", "pos": "noun" },
-  { "word": "heißen", "article": "—", "translation_tr": "adı olmak", "example_sentence": "Ich heiße Maria.", "topic": "Kendini tanıtma", "pos": "verb" },
-  { "word": "kommen", "article": "—", "translation_tr": "gelmek", "example_sentence": "Ich komme aus der Türkei.", "topic": "Kendini tanıtma", "pos": "verb" },
-  { "word": "wohnen", "article": "—", "translation_tr": "yaşamak, ikamet etmek", "example_sentence": "Ich wohne in Berlin.", "topic": "Kendini tanıtma", "pos": "verb" },
-  { "word": "Jahr", "article": "das", "translation_tr": "yıl", "example_sentence": "Ich bin 25 Jahre alt.", "topic": "Kendini tanıtma", "pos": "noun" },
-  { "word": "eins", "article": "—", "translation_tr": "bir (1)", "example_sentence": "Ich habe einen Bruder.", "topic": "Sayılar (1–20)", "pos": "numeral" },
-  { "word": "zwei", "article": "—", "translation_tr": "iki (2)", "example_sentence": "Ich habe zwei Katzen.", "topic": "Sayılar (1–20)", "pos": "numeral" },
-  { "word": "zehn", "article": "—", "translation_tr": "on (10)", "example_sentence": "Das kostet zehn Euro.", "topic": "Sayılar (1–20)", "pos": "numeral" },
-  { "word": "zwanzig", "article": "—", "translation_tr": "yirmi (20)", "example_sentence": "Er ist zwanzig Jahre alt.", "topic": "Sayılar (1–20)", "pos": "numeral" },
-  { "word": "rot", "article": "—", "translation_tr": "kırmızı", "example_sentence": "Die Ampel ist rot.", "topic": "Renkler", "pos": "adjective" },
-  { "word": "blau", "article": "—", "translation_tr": "mavi", "example_sentence": "Der Himmel ist blau.", "topic": "Renkler", "pos": "adjective" },
-  { "word": "grün", "article": "—", "translation_tr": "yeşil", "example_sentence": "Das Gras ist grün.", "topic": "Renkler", "pos": "adjective" },
-  { "word": "weiß", "article": "—", "translation_tr": "beyaz", "example_sentence": "Das Hemd ist weiß.", "topic": "Renkler", "pos": "adjective" },
-  { "word": "schwarz", "article": "—", "translation_tr": "siyah", "example_sentence": "Die Tasche ist schwarz.", "topic": "Renkler", "pos": "adjective" },
-  { "word": "gelb", "article": "—", "translation_tr": "sarı", "example_sentence": "Die Sonne ist gelb.", "topic": "Renkler", "pos": "adjective" }
+  {
+    "word": "Guten Morgen",
+    "article": "—",
+    "translation_tr": "Günaydın",
+    "example_sentence": "Guten Morgen! Wie geht es Ihnen?",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Hallo",
+    "article": "—",
+    "translation_tr": "Merhaba",
+    "example_sentence": "Hallo, ich bin Anna.",
+    "topic": "Selamlaşma",
+    "pos": "interjection"
+  },
+  {
+    "word": "Auf Wiedersehen",
+    "article": "—",
+    "translation_tr": "Görüşürüz (resmi)",
+    "example_sentence": "Auf Wiedersehen! Bis morgen.",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Guten Tag",
+    "article": "—",
+    "translation_tr": "İyi günler",
+    "example_sentence": "Guten Tag, mein Name ist Schmidt.",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Tschüss",
+    "article": "—",
+    "translation_tr": "Hoşça kal (günlük)",
+    "example_sentence": "Tschüss! Bis später.",
+    "topic": "Selamlaşma",
+    "pos": "interjection"
+  },
+  {
+    "word": "Guten Abend",
+    "article": "—",
+    "translation_tr": "İyi akşamlar",
+    "example_sentence": "Guten Abend! Wie war Ihr Tag?",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Gute Nacht",
+    "article": "—",
+    "translation_tr": "İyi geceler",
+    "example_sentence": "Gute Nacht! Schlaf gut.",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Bitte",
+    "article": "—",
+    "translation_tr": "Lütfen / Rica ederim",
+    "example_sentence": "Ein Kaffee, bitte.",
+    "topic": "Selamlaşma",
+    "pos": "adverb"
+  },
+  {
+    "word": "Danke",
+    "article": "—",
+    "translation_tr": "Teşekkür ederim",
+    "example_sentence": "Danke schön!",
+    "topic": "Selamlaşma",
+    "pos": "interjection"
+  },
+  {
+    "word": "Entschuldigung",
+    "article": "—",
+    "translation_tr": "Özür dilerim / Pardon",
+    "example_sentence": "Entschuldigung, wo ist der Bahnhof?",
+    "topic": "Selamlaşma",
+    "pos": "interjection"
+  },
+  {
+    "word": "Ja",
+    "article": "—",
+    "translation_tr": "Evet",
+    "example_sentence": "Ja, das stimmt.",
+    "topic": "Selamlaşma",
+    "pos": "adverb"
+  },
+  {
+    "word": "Nein",
+    "article": "—",
+    "translation_tr": "Hayır",
+    "example_sentence": "Nein, ich komme nicht.",
+    "topic": "Selamlaşma",
+    "pos": "adverb"
+  },
+  {
+    "word": "Bis bald",
+    "article": "—",
+    "translation_tr": "Yakında görüşürüz",
+    "example_sentence": "Bis bald! Tschüss.",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Wie geht es Ihnen?",
+    "article": "—",
+    "translation_tr": "Nasılsınız? (resmi)",
+    "example_sentence": "Guten Tag! Wie geht es Ihnen?",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Wie geht's?",
+    "article": "—",
+    "translation_tr": "Nasılsın? (günlük)",
+    "example_sentence": "Hallo! Wie geht's?",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Sehr gut",
+    "article": "—",
+    "translation_tr": "Çok iyi",
+    "example_sentence": "Mir geht es sehr gut, danke.",
+    "topic": "Selamlaşma",
+    "pos": "phrase"
+  },
+  {
+    "word": "Gut",
+    "article": "—",
+    "translation_tr": "İyi",
+    "example_sentence": "Es geht mir gut.",
+    "topic": "Selamlaşma",
+    "pos": "adjective"
+  },
+  {
+    "word": "Name",
+    "article": "der",
+    "translation_tr": "İsim, ad",
+    "example_sentence": "Mein Name ist Thomas.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "heißen",
+    "article": "—",
+    "translation_tr": "Adı olmak",
+    "example_sentence": "Ich heiße Maria.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "kommen",
+    "article": "—",
+    "translation_tr": "Gelmek",
+    "example_sentence": "Ich komme aus der Türkei.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "wohnen",
+    "article": "—",
+    "translation_tr": "Yaşamak, ikamet etmek",
+    "example_sentence": "Ich wohne in Berlin.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "Jahr",
+    "article": "das",
+    "translation_tr": "Yıl",
+    "example_sentence": "Ich bin 25 Jahre alt.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "alt",
+    "article": "—",
+    "translation_tr": "Yaşlı, eski",
+    "example_sentence": "Er ist 30 Jahre alt.",
+    "topic": "Kendini tanıtma",
+    "pos": "adjective"
+  },
+  {
+    "word": "jung",
+    "article": "—",
+    "translation_tr": "Genç",
+    "example_sentence": "Sie ist sehr jung.",
+    "topic": "Kendini tanıtma",
+    "pos": "adjective"
+  },
+  {
+    "word": "sprechen",
+    "article": "—",
+    "translation_tr": "Konuşmak",
+    "example_sentence": "Ich spreche Deutsch.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "lernen",
+    "article": "—",
+    "translation_tr": "Öğrenmek",
+    "example_sentence": "Ich lerne Deutsch.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "Deutsch",
+    "article": "—",
+    "translation_tr": "Almanca",
+    "example_sentence": "Ich lerne Deutsch.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Türkisch",
+    "article": "—",
+    "translation_tr": "Türkçe",
+    "example_sentence": "Meine Muttersprache ist Türkisch.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Land",
+    "article": "das",
+    "translation_tr": "Ülke",
+    "example_sentence": "Aus welchem Land kommen Sie?",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Stadt",
+    "article": "die",
+    "translation_tr": "Şehir",
+    "example_sentence": "Berlin ist eine große Stadt.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Adresse",
+    "article": "die",
+    "translation_tr": "Adres",
+    "example_sentence": "Was ist Ihre Adresse?",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Straße",
+    "article": "die",
+    "translation_tr": "Sokak, cadde",
+    "example_sentence": "Ich wohne in der Hauptstraße.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Telefon",
+    "article": "das",
+    "translation_tr": "Telefon",
+    "example_sentence": "Mein Telefon ist neu.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Beruf",
+    "article": "der",
+    "translation_tr": "Meslek",
+    "example_sentence": "Was ist Ihr Beruf?",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Mann",
+    "article": "der",
+    "translation_tr": "Erkek, adam",
+    "example_sentence": "Der Mann heißt Klaus.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Frau",
+    "article": "die",
+    "translation_tr": "Kadın, bayan",
+    "example_sentence": "Die Frau heißt Petra.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "sein",
+    "article": "—",
+    "translation_tr": "Olmak",
+    "example_sentence": "Ich bin Student.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "haben",
+    "article": "—",
+    "translation_tr": "Sahip olmak",
+    "example_sentence": "Ich habe einen Bruder.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "verstehen",
+    "article": "—",
+    "translation_tr": "Anlamak",
+    "example_sentence": "Ich verstehe das nicht.",
+    "topic": "Kendini tanıtma",
+    "pos": "verb"
+  },
+  {
+    "word": "Person",
+    "article": "die",
+    "translation_tr": "Kişi",
+    "example_sentence": "Wie viele Personen sind das?",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "Nationalität",
+    "article": "die",
+    "translation_tr": "Milliyet",
+    "example_sentence": "Meine Nationalität ist türkisch.",
+    "topic": "Kendini tanıtma",
+    "pos": "noun"
+  },
+  {
+    "word": "null",
+    "article": "—",
+    "translation_tr": "Sıfır (0)",
+    "example_sentence": "Null Grad — es ist sehr kalt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "eins",
+    "article": "—",
+    "translation_tr": "Bir (1)",
+    "example_sentence": "Ich habe einen Bruder.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "zwei",
+    "article": "—",
+    "translation_tr": "İki (2)",
+    "example_sentence": "Ich habe zwei Katzen.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "drei",
+    "article": "—",
+    "translation_tr": "Üç (3)",
+    "example_sentence": "Ich brauche drei Eier.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "vier",
+    "article": "—",
+    "translation_tr": "Dört (4)",
+    "example_sentence": "Wir haben vier Personen.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "fünf",
+    "article": "—",
+    "translation_tr": "Beş (5)",
+    "example_sentence": "Ich stehe um fünf Uhr auf.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "sechs",
+    "article": "—",
+    "translation_tr": "Altı (6)",
+    "example_sentence": "Das Kind ist sechs Jahre alt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "sieben",
+    "article": "—",
+    "translation_tr": "Yedi (7)",
+    "example_sentence": "Die Woche hat sieben Tage.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "acht",
+    "article": "—",
+    "translation_tr": "Sekiz (8)",
+    "example_sentence": "Ich schlafe acht Stunden.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "neun",
+    "article": "—",
+    "translation_tr": "Dokuz (9)",
+    "example_sentence": "Es ist neun Uhr.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "zehn",
+    "article": "—",
+    "translation_tr": "On (10)",
+    "example_sentence": "Das kostet zehn Euro.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "elf",
+    "article": "—",
+    "translation_tr": "On bir (11)",
+    "example_sentence": "Der Zug fährt um elf Uhr ab.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "zwölf",
+    "article": "—",
+    "translation_tr": "On iki (12)",
+    "example_sentence": "Es ist zwölf Uhr mittags.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "dreizehn",
+    "article": "—",
+    "translation_tr": "On üç (13)",
+    "example_sentence": "Ich bin dreizehn Jahre alt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "vierzehn",
+    "article": "—",
+    "translation_tr": "On dört (14)",
+    "example_sentence": "Das kostet vierzehn Euro.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "fünfzehn",
+    "article": "—",
+    "translation_tr": "On beş (15)",
+    "example_sentence": "Die Pause dauert fünfzehn Minuten.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "sechzehn",
+    "article": "—",
+    "translation_tr": "On altı (16)",
+    "example_sentence": "Sie ist sechzehn Jahre alt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "siebzehn",
+    "article": "—",
+    "translation_tr": "On yedi (17)",
+    "example_sentence": "Der Film beginnt um siebzehn Uhr.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "achtzehn",
+    "article": "—",
+    "translation_tr": "On sekiz (18)",
+    "example_sentence": "Mit achtzehn Jahren kann man wählen.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "neunzehn",
+    "article": "—",
+    "translation_tr": "On dokuz (19)",
+    "example_sentence": "Es ist neunzehn Uhr.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "zwanzig",
+    "article": "—",
+    "translation_tr": "Yirmi (20)",
+    "example_sentence": "Er ist zwanzig Jahre alt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "dreißig",
+    "article": "—",
+    "translation_tr": "Otuz (30)",
+    "example_sentence": "Sie ist dreißig Jahre alt.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "vierzig",
+    "article": "—",
+    "translation_tr": "Kırk (40)",
+    "example_sentence": "Das Buch kostet vierzig Euro.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "fünfzig",
+    "article": "—",
+    "translation_tr": "Elli (50)",
+    "example_sentence": "Der Zug fährt fünfzig Kilometer.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "hundert",
+    "article": "—",
+    "translation_tr": "Yüz (100)",
+    "example_sentence": "Das kostet hundert Euro.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "tausend",
+    "article": "—",
+    "translation_tr": "Bin (1000)",
+    "example_sentence": "Das Auto kostet tausend Euro.",
+    "topic": "Sayılar (1–20)",
+    "pos": "numeral"
+  },
+  {
+    "word": "rot",
+    "article": "—",
+    "translation_tr": "Kırmızı",
+    "example_sentence": "Die Ampel ist rot.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "blau",
+    "article": "—",
+    "translation_tr": "Mavi",
+    "example_sentence": "Der Himmel ist blau.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "grün",
+    "article": "—",
+    "translation_tr": "Yeşil",
+    "example_sentence": "Das Gras ist grün.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "weiß",
+    "article": "—",
+    "translation_tr": "Beyaz",
+    "example_sentence": "Das Hemd ist weiß.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "schwarz",
+    "article": "—",
+    "translation_tr": "Siyah",
+    "example_sentence": "Die Tasche ist schwarz.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "gelb",
+    "article": "—",
+    "translation_tr": "Sarı",
+    "example_sentence": "Die Sonne ist gelb.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "orange",
+    "article": "—",
+    "translation_tr": "Turuncu",
+    "example_sentence": "Die Orange ist orange.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "braun",
+    "article": "—",
+    "translation_tr": "Kahverengi",
+    "example_sentence": "Der Tisch ist braun.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "grau",
+    "article": "—",
+    "translation_tr": "Gri",
+    "example_sentence": "Der Mantel ist grau.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "rosa",
+    "article": "—",
+    "translation_tr": "Pembe",
+    "example_sentence": "Das Kleid ist rosa.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "lila",
+    "article": "—",
+    "translation_tr": "Mor",
+    "example_sentence": "Die Blume ist lila.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "bunt",
+    "article": "—",
+    "translation_tr": "Renkli, çok renkli",
+    "example_sentence": "Der Regenbogen ist bunt.",
+    "topic": "Renkler",
+    "pos": "adjective"
+  },
+  {
+    "word": "Familie",
+    "article": "die",
+    "translation_tr": "Aile",
+    "example_sentence": "Meine Familie ist groß.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Mutter",
+    "article": "die",
+    "translation_tr": "Anne",
+    "example_sentence": "Meine Mutter heißt Fatma.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Vater",
+    "article": "der",
+    "translation_tr": "Baba",
+    "example_sentence": "Mein Vater arbeitet in Berlin.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Kind",
+    "article": "das",
+    "translation_tr": "Çocuk",
+    "example_sentence": "Das Kind spielt im Garten.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Sohn",
+    "article": "der",
+    "translation_tr": "Oğul",
+    "example_sentence": "Mein Sohn ist fünf Jahre alt.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Tochter",
+    "article": "die",
+    "translation_tr": "Kız çocuk",
+    "example_sentence": "Meine Tochter lernt Klavier.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Bruder",
+    "article": "der",
+    "translation_tr": "Erkek kardeş",
+    "example_sentence": "Mein Bruder wohnt in Hamburg.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Schwester",
+    "article": "die",
+    "translation_tr": "Kız kardeş",
+    "example_sentence": "Meine Schwester ist Ärztin.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Großmutter",
+    "article": "die",
+    "translation_tr": "Büyükanne",
+    "example_sentence": "Meine Großmutter kocht sehr gut.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Großvater",
+    "article": "der",
+    "translation_tr": "Büyükbaba",
+    "example_sentence": "Mein Großvater ist 80 Jahre alt.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Oma",
+    "article": "die",
+    "translation_tr": "Babaanne/anneanne (günlük)",
+    "example_sentence": "Meine Oma macht leckeren Kuchen.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Opa",
+    "article": "der",
+    "translation_tr": "Büyükbaba (günlük)",
+    "example_sentence": "Mein Opa liest die Zeitung.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Onkel",
+    "article": "der",
+    "translation_tr": "Amca, dayı",
+    "example_sentence": "Mein Onkel lebt in München.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Tante",
+    "article": "die",
+    "translation_tr": "Hala, teyze",
+    "example_sentence": "Meine Tante hat drei Kinder.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Eltern",
+    "article": "die",
+    "translation_tr": "Ebeveynler",
+    "example_sentence": "Meine Eltern kommen aus der Türkei.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Geschwister",
+    "article": "die",
+    "translation_tr": "Kardeşler",
+    "example_sentence": "Hast du Geschwister?",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Baby",
+    "article": "das",
+    "translation_tr": "Bebek",
+    "example_sentence": "Das Baby schläft.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Freund",
+    "article": "der",
+    "translation_tr": "Erkek arkadaş, dost",
+    "example_sentence": "Mein Freund heißt Max.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Freundin",
+    "article": "die",
+    "translation_tr": "Kız arkadaş, dost (kadın)",
+    "example_sentence": "Meine Freundin kommt morgen.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Ehemann",
+    "article": "der",
+    "translation_tr": "Koca, eş (erkek)",
+    "example_sentence": "Mein Ehemann arbeitet als Arzt.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Ehefrau",
+    "article": "die",
+    "translation_tr": "Eş (kadın)",
+    "example_sentence": "Meine Ehefrau ist Lehrerin.",
+    "topic": "Aile üyeleri",
+    "pos": "noun"
+  },
+  {
+    "word": "Arzt",
+    "article": "der",
+    "translation_tr": "Doktor (erkek)",
+    "example_sentence": "Der Arzt kommt um drei Uhr.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Ärztin",
+    "article": "die",
+    "translation_tr": "Doktor (kadın)",
+    "example_sentence": "Die Ärztin ist sehr nett.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Lehrer",
+    "article": "der",
+    "translation_tr": "Öğretmen (erkek)",
+    "example_sentence": "Der Lehrer erklärt die Aufgabe.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Lehrerin",
+    "article": "die",
+    "translation_tr": "Öğretmen (kadın)",
+    "example_sentence": "Die Lehrerin spricht Deutsch.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Student",
+    "article": "der",
+    "translation_tr": "Üniversite öğrencisi (erkek)",
+    "example_sentence": "Der Student lernt Medizin.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Studentin",
+    "article": "die",
+    "translation_tr": "Üniversite öğrencisi (kadın)",
+    "example_sentence": "Die Studentin studiert in Berlin.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Koch",
+    "article": "der",
+    "translation_tr": "Aşçı (erkek)",
+    "example_sentence": "Der Koch kocht sehr gut.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Kellner",
+    "article": "der",
+    "translation_tr": "Garson (erkek)",
+    "example_sentence": "Der Kellner bringt die Speisekarte.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Kellnerin",
+    "article": "die",
+    "translation_tr": "Garson (kadın)",
+    "example_sentence": "Die Kellnerin ist sehr freundlich.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Polizist",
+    "article": "der",
+    "translation_tr": "Polis (erkek)",
+    "example_sentence": "Der Polizist hilft uns.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Ingenieur",
+    "article": "der",
+    "translation_tr": "Mühendis",
+    "example_sentence": "Mein Vater ist Ingenieur.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Sekretärin",
+    "article": "die",
+    "translation_tr": "Sekreter (kadın)",
+    "example_sentence": "Die Sekretärin schreibt E-Mails.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Verkäufer",
+    "article": "der",
+    "translation_tr": "Satıcı (erkek)",
+    "example_sentence": "Der Verkäufer ist sehr hilfsbereit.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Verkäuferin",
+    "article": "die",
+    "translation_tr": "Satıcı (kadın)",
+    "example_sentence": "Die Verkäuferin zeigt mir die Jacke.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Bäcker",
+    "article": "der",
+    "translation_tr": "Fırıncı (erkek)",
+    "example_sentence": "Der Bäcker macht frisches Brot.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Friseur",
+    "article": "der",
+    "translation_tr": "Kuaför (erkek)",
+    "example_sentence": "Ich gehe zum Friseur.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Friseurin",
+    "article": "die",
+    "translation_tr": "Kuaför (kadın)",
+    "example_sentence": "Die Friseurin schneidet meine Haare.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Mechaniker",
+    "article": "der",
+    "translation_tr": "Tamirci, teknisyen",
+    "example_sentence": "Der Mechaniker repariert das Auto.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Journalist",
+    "article": "der",
+    "translation_tr": "Gazeteci",
+    "example_sentence": "Der Journalist schreibt einen Artikel.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Architekt",
+    "article": "der",
+    "translation_tr": "Mimar",
+    "example_sentence": "Der Architekt zeichnet die Pläne.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Hausfrau",
+    "article": "die",
+    "translation_tr": "Ev hanımı",
+    "example_sentence": "Sie ist Hausfrau und Mutter.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "arbeiten",
+    "article": "—",
+    "translation_tr": "Çalışmak",
+    "example_sentence": "Ich arbeite in einem Büro.",
+    "topic": "Meslekler",
+    "pos": "verb"
+  },
+  {
+    "word": "studieren",
+    "article": "—",
+    "translation_tr": "Üniversitede okumak",
+    "example_sentence": "Ich studiere Medizin.",
+    "topic": "Meslekler",
+    "pos": "verb"
+  },
+  {
+    "word": "Büro",
+    "article": "das",
+    "translation_tr": "Ofis, büro",
+    "example_sentence": "Ich arbeite im Büro.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Schule",
+    "article": "die",
+    "translation_tr": "Okul",
+    "example_sentence": "Die Kinder gehen in die Schule.",
+    "topic": "Meslekler",
+    "pos": "noun"
+  },
+  {
+    "word": "Buch",
+    "article": "das",
+    "translation_tr": "Kitap",
+    "example_sentence": "Ich lese ein Buch.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Heft",
+    "article": "das",
+    "translation_tr": "Defter",
+    "example_sentence": "Das Heft ist neu.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Stift",
+    "article": "der",
+    "translation_tr": "Kalem",
+    "example_sentence": "Ich brauche einen Stift.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Bleistift",
+    "article": "der",
+    "translation_tr": "Kurşun kalem",
+    "example_sentence": "Schreib mit dem Bleistift.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Tasche",
+    "article": "die",
+    "translation_tr": "Çanta",
+    "example_sentence": "Meine Tasche ist schwer.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Computer",
+    "article": "der",
+    "translation_tr": "Bilgisayar",
+    "example_sentence": "Ich arbeite am Computer.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Handy",
+    "article": "das",
+    "translation_tr": "Cep telefonu",
+    "example_sentence": "Mein Handy klingelt.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Uhr",
+    "article": "die",
+    "translation_tr": "Saat (nesne)",
+    "example_sentence": "Die Uhr ist kaputt.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Schlüssel",
+    "article": "der",
+    "translation_tr": "Anahtar",
+    "example_sentence": "Wo ist mein Schlüssel?",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Brille",
+    "article": "die",
+    "translation_tr": "Gözlük",
+    "example_sentence": "Ich brauche eine Brille.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Regenschirm",
+    "article": "der",
+    "translation_tr": "Şemsiye",
+    "example_sentence": "Nimm den Regenschirm mit!",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Tisch",
+    "article": "der",
+    "translation_tr": "Masa",
+    "example_sentence": "Das Buch liegt auf dem Tisch.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Stuhl",
+    "article": "der",
+    "translation_tr": "Sandalye",
+    "example_sentence": "Setz dich auf den Stuhl.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Lampe",
+    "article": "die",
+    "translation_tr": "Lamba",
+    "example_sentence": "Die Lampe ist an.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Fenster",
+    "article": "das",
+    "translation_tr": "Pencere",
+    "example_sentence": "Mach das Fenster auf.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Tür",
+    "article": "die",
+    "translation_tr": "Kapı",
+    "example_sentence": "Die Tür ist zu.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Papier",
+    "article": "das",
+    "translation_tr": "Kağıt",
+    "example_sentence": "Ich brauche Papier.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Brief",
+    "article": "der",
+    "translation_tr": "Mektup",
+    "example_sentence": "Ich schreibe einen Brief.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Foto",
+    "article": "das",
+    "translation_tr": "Fotoğraf",
+    "example_sentence": "Das ist ein schönes Foto.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Fahrrad",
+    "article": "das",
+    "translation_tr": "Bisiklet",
+    "example_sentence": "Ich fahre mit dem Fahrrad.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Ball",
+    "article": "der",
+    "translation_tr": "Top",
+    "example_sentence": "Die Kinder spielen mit dem Ball.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Musik",
+    "article": "die",
+    "translation_tr": "Müzik",
+    "example_sentence": "Ich höre gern Musik.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Film",
+    "article": "der",
+    "translation_tr": "Film",
+    "example_sentence": "Wir sehen einen Film.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Zeitung",
+    "article": "die",
+    "translation_tr": "Gazete",
+    "example_sentence": "Mein Vater liest die Zeitung.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Geld",
+    "article": "das",
+    "translation_tr": "Para",
+    "example_sentence": "Ich habe kein Geld.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Flasche",
+    "article": "die",
+    "translation_tr": "Şişe",
+    "example_sentence": "Eine Flasche Wasser, bitte.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Glas",
+    "article": "das",
+    "translation_tr": "Bardak, cam",
+    "example_sentence": "Ein Glas Wasser, bitte.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Tasse",
+    "article": "die",
+    "translation_tr": "Fincan",
+    "example_sentence": "Eine Tasse Kaffee, bitte.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Messer",
+    "article": "das",
+    "translation_tr": "Bıçak",
+    "example_sentence": "Das Messer ist scharf.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Gabel",
+    "article": "die",
+    "translation_tr": "Çatal",
+    "example_sentence": "Ich brauche eine Gabel.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Löffel",
+    "article": "der",
+    "translation_tr": "Kaşık",
+    "example_sentence": "Gib mir bitte einen Löffel.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Teller",
+    "article": "der",
+    "translation_tr": "Tabak",
+    "example_sentence": "Der Teller ist leer.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Koffer",
+    "article": "der",
+    "translation_tr": "Bavul",
+    "example_sentence": "Mein Koffer ist sehr schwer.",
+    "topic": "Günlük nesneler",
+    "pos": "noun"
+  },
+  {
+    "word": "Wasser",
+    "article": "das",
+    "translation_tr": "Su",
+    "example_sentence": "Ich trinke Wasser.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Milch",
+    "article": "die",
+    "translation_tr": "Süt",
+    "example_sentence": "Ich trinke Milch zum Frühstück.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Kaffee",
+    "article": "der",
+    "translation_tr": "Kahve",
+    "example_sentence": "Ich trinke jeden Morgen Kaffee.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Tee",
+    "article": "der",
+    "translation_tr": "Çay",
+    "example_sentence": "Möchtest du Tee oder Kaffee?",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Saft",
+    "article": "der",
+    "translation_tr": "Meyve suyu",
+    "example_sentence": "Ein Glas Orangensaft, bitte.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Bier",
+    "article": "das",
+    "translation_tr": "Bira",
+    "example_sentence": "In Deutschland trinkt man viel Bier.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Brot",
+    "article": "das",
+    "translation_tr": "Ekmek",
+    "example_sentence": "Ich esse Brot zum Frühstück.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Brötchen",
+    "article": "das",
+    "translation_tr": "Küçük ekmek, sandviç ekmeği",
+    "example_sentence": "Ich kaufe drei Brötchen.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Butter",
+    "article": "die",
+    "translation_tr": "Tereyağı",
+    "example_sentence": "Ich streiche Butter auf das Brot.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Käse",
+    "article": "der",
+    "translation_tr": "Peynir",
+    "example_sentence": "Ich esse Brot mit Käse.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Wurst",
+    "article": "die",
+    "translation_tr": "Salam, sosis",
+    "example_sentence": "Ich kaufe Wurst beim Metzger.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Fleisch",
+    "article": "das",
+    "translation_tr": "Et",
+    "example_sentence": "Ich esse kein Fleisch.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Fisch",
+    "article": "der",
+    "translation_tr": "Balık",
+    "example_sentence": "Ich esse gern Fisch.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Ei",
+    "article": "das",
+    "translation_tr": "Yumurta",
+    "example_sentence": "Ich esse ein Ei zum Frühstück.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Salat",
+    "article": "der",
+    "translation_tr": "Salata",
+    "example_sentence": "Ich esse gern Salat.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Suppe",
+    "article": "die",
+    "translation_tr": "Çorba",
+    "example_sentence": "Die Suppe ist heiß.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Nudeln",
+    "article": "die",
+    "translation_tr": "Makarna, erişte",
+    "example_sentence": "Ich koche Nudeln.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Reis",
+    "article": "der",
+    "translation_tr": "Pirinç, pilav",
+    "example_sentence": "Ich esse Reis mit Gemüse.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Kartoffel",
+    "article": "die",
+    "translation_tr": "Patates",
+    "example_sentence": "Deutsche essen viele Kartoffeln.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Tomate",
+    "article": "die",
+    "translation_tr": "Domates",
+    "example_sentence": "Ich kaufe Tomaten.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Gurke",
+    "article": "die",
+    "translation_tr": "Salatalık",
+    "example_sentence": "Die Gurke ist frisch.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Zwiebel",
+    "article": "die",
+    "translation_tr": "Soğan",
+    "example_sentence": "Ich schneide die Zwiebel.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Apfel",
+    "article": "der",
+    "translation_tr": "Elma",
+    "example_sentence": "Ein Apfel am Tag hält den Arzt fern.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Banane",
+    "article": "die",
+    "translation_tr": "Muz",
+    "example_sentence": "Ich esse eine Banane.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Orange",
+    "article": "die",
+    "translation_tr": "Portakal",
+    "example_sentence": "Ich trinke Orangensaft.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Erdbeere",
+    "article": "die",
+    "translation_tr": "Çilek",
+    "example_sentence": "Im Sommer esse ich Erdbeeren.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Zucker",
+    "article": "der",
+    "translation_tr": "Şeker",
+    "example_sentence": "Kaffee mit Zucker, bitte.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Salz",
+    "article": "das",
+    "translation_tr": "Tuz",
+    "example_sentence": "Die Suppe braucht mehr Salz.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Kuchen",
+    "article": "der",
+    "translation_tr": "Kek, pasta",
+    "example_sentence": "Meine Oma backt Kuchen.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Schokolade",
+    "article": "die",
+    "translation_tr": "Çikolata",
+    "example_sentence": "Ich esse gern Schokolade.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Eis",
+    "article": "das",
+    "translation_tr": "Dondurma; buz",
+    "example_sentence": "Im Sommer esse ich Eis.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Frühstück",
+    "article": "das",
+    "translation_tr": "Kahvaltı",
+    "example_sentence": "Ich frühstücke um sieben Uhr.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Mittagessen",
+    "article": "das",
+    "translation_tr": "Öğle yemeği",
+    "example_sentence": "Das Mittagessen ist um zwölf.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Abendessen",
+    "article": "das",
+    "translation_tr": "Akşam yemeği",
+    "example_sentence": "Wir essen um sieben Abendessen.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "lecker",
+    "article": "—",
+    "translation_tr": "Lezzetli",
+    "example_sentence": "Das Essen ist sehr lecker!",
+    "topic": "Yiyecek ve içecek",
+    "pos": "adjective"
+  },
+  {
+    "word": "essen",
+    "article": "—",
+    "translation_tr": "Yemek (fiil)",
+    "example_sentence": "Ich esse Brot.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "verb"
+  },
+  {
+    "word": "trinken",
+    "article": "—",
+    "translation_tr": "İçmek",
+    "example_sentence": "Ich trinke Wasser.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "verb"
+  },
+  {
+    "word": "kochen",
+    "article": "—",
+    "translation_tr": "Pişirmek, yemek yapmak",
+    "example_sentence": "Meine Mutter kocht gut.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "verb"
+  },
+  {
+    "word": "Gemüse",
+    "article": "das",
+    "translation_tr": "Sebze",
+    "example_sentence": "Ich esse viel Gemüse.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Obst",
+    "article": "das",
+    "translation_tr": "Meyve",
+    "example_sentence": "Obst ist gesund.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Marmelade",
+    "article": "die",
+    "translation_tr": "Reçel",
+    "example_sentence": "Ich esse Brot mit Marmelade.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Joghurt",
+    "article": "der",
+    "translation_tr": "Yoğurt",
+    "example_sentence": "Ich esse Joghurt zum Frühstück.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Restaurant",
+    "article": "das",
+    "translation_tr": "Restoran",
+    "example_sentence": "Wir essen im Restaurant.",
+    "topic": "Yiyecek ve içecek",
+    "pos": "noun"
+  },
+  {
+    "word": "Montag",
+    "article": "der",
+    "translation_tr": "Pazartesi",
+    "example_sentence": "Am Montag habe ich Schule.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Dienstag",
+    "article": "der",
+    "translation_tr": "Salı",
+    "example_sentence": "Am Dienstag gehe ich zum Sport.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Mittwoch",
+    "article": "der",
+    "translation_tr": "Çarşamba",
+    "example_sentence": "Am Mittwoch kommt er.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Donnerstag",
+    "article": "der",
+    "translation_tr": "Perşembe",
+    "example_sentence": "Am Donnerstag haben wir frei.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Freitag",
+    "article": "der",
+    "translation_tr": "Cuma",
+    "example_sentence": "Am Freitag fahren wir weg.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Samstag",
+    "article": "der",
+    "translation_tr": "Cumartesi",
+    "example_sentence": "Am Samstag schlafe ich lange.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Sonntag",
+    "article": "der",
+    "translation_tr": "Pazar",
+    "example_sentence": "Am Sonntag besuche ich meine Familie.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Januar",
+    "article": "der",
+    "translation_tr": "Ocak",
+    "example_sentence": "Im Januar ist es kalt.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Februar",
+    "article": "der",
+    "translation_tr": "Şubat",
+    "example_sentence": "Im Februar ist es noch kalt.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "März",
+    "article": "der",
+    "translation_tr": "Mart",
+    "example_sentence": "Im März beginnt der Frühling.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "April",
+    "article": "der",
+    "translation_tr": "Nisan",
+    "example_sentence": "Im April regnet es oft.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Mai",
+    "article": "der",
+    "translation_tr": "Mayıs",
+    "example_sentence": "Im Mai blühen die Blumen.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Juni",
+    "article": "der",
+    "translation_tr": "Haziran",
+    "example_sentence": "Im Juni ist es warm.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Juli",
+    "article": "der",
+    "translation_tr": "Temmuz",
+    "example_sentence": "Im Juli fahren wir in Urlaub.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "August",
+    "article": "der",
+    "translation_tr": "Ağustos",
+    "example_sentence": "Im August ist es sehr heiß.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "September",
+    "article": "der",
+    "translation_tr": "Eylül",
+    "example_sentence": "Im September beginnt die Schule.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Oktober",
+    "article": "der",
+    "translation_tr": "Ekim",
+    "example_sentence": "Im Oktober werden die Blätter bunt.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "November",
+    "article": "der",
+    "translation_tr": "Kasım",
+    "example_sentence": "Im November ist es grau.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Dezember",
+    "article": "der",
+    "translation_tr": "Aralık",
+    "example_sentence": "Im Dezember gibt es Weihnachten.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Woche",
+    "article": "die",
+    "translation_tr": "Hafta",
+    "example_sentence": "Die Woche hat sieben Tage.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Monat",
+    "article": "der",
+    "translation_tr": "Ay",
+    "example_sentence": "Das Jahr hat zwölf Monate.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Wochenende",
+    "article": "das",
+    "translation_tr": "Hafta sonu",
+    "example_sentence": "Am Wochenende schlafe ich lange.",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "heute",
+    "article": "—",
+    "translation_tr": "Bugün",
+    "example_sentence": "Heute ist Montag.",
+    "topic": "Günler ve aylar",
+    "pos": "adverb"
+  },
+  {
+    "word": "morgen",
+    "article": "—",
+    "translation_tr": "Yarın",
+    "example_sentence": "Morgen komme ich.",
+    "topic": "Günler ve aylar",
+    "pos": "adverb"
+  },
+  {
+    "word": "gestern",
+    "article": "—",
+    "translation_tr": "Dün",
+    "example_sentence": "Gestern war ich krank.",
+    "topic": "Günler ve aylar",
+    "pos": "adverb"
+  },
+  {
+    "word": "Tag",
+    "article": "der",
+    "translation_tr": "Gün",
+    "example_sentence": "Guten Tag!",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Datum",
+    "article": "das",
+    "translation_tr": "Tarih",
+    "example_sentence": "Was ist das Datum heute?",
+    "topic": "Günler ve aylar",
+    "pos": "noun"
+  },
+  {
+    "word": "Stunde",
+    "article": "die",
+    "translation_tr": "Saat (süre)",
+    "example_sentence": "Der Film dauert zwei Stunden.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Minute",
+    "article": "die",
+    "translation_tr": "Dakika",
+    "example_sentence": "Es ist fünf Minuten nach acht.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Sekunde",
+    "article": "die",
+    "translation_tr": "Saniye",
+    "example_sentence": "Warte eine Sekunde!",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "halb",
+    "article": "—",
+    "translation_tr": "Buçuk, yarım",
+    "example_sentence": "Es ist halb drei.",
+    "topic": "Saat kaç?",
+    "pos": "adjective"
+  },
+  {
+    "word": "Viertel",
+    "article": "das",
+    "translation_tr": "Çeyrek, on beş dakika",
+    "example_sentence": "Es ist Viertel nach zwei.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Morgen",
+    "article": "der",
+    "translation_tr": "Sabah",
+    "example_sentence": "Am Morgen trinke ich Kaffee.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Mittag",
+    "article": "der",
+    "translation_tr": "Öğle",
+    "example_sentence": "Zu Mittag esse ich in der Kantine.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Nachmittag",
+    "article": "der",
+    "translation_tr": "Öğleden sonra",
+    "example_sentence": "Am Nachmittag gehe ich spazieren.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Abend",
+    "article": "der",
+    "translation_tr": "Akşam",
+    "example_sentence": "Am Abend sehe ich fern.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Nacht",
+    "article": "die",
+    "translation_tr": "Gece",
+    "example_sentence": "In der Nacht schlafe ich.",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "früh",
+    "article": "—",
+    "translation_tr": "Erken",
+    "example_sentence": "Ich stehe früh auf.",
+    "topic": "Saat kaç?",
+    "pos": "adjective"
+  },
+  {
+    "word": "spät",
+    "article": "—",
+    "translation_tr": "Geç",
+    "example_sentence": "Es ist schon spät.",
+    "topic": "Saat kaç?",
+    "pos": "adjective"
+  },
+  {
+    "word": "jetzt",
+    "article": "—",
+    "translation_tr": "Şimdi",
+    "example_sentence": "Was machst du jetzt?",
+    "topic": "Saat kaç?",
+    "pos": "adverb"
+  },
+  {
+    "word": "pünktlich",
+    "article": "—",
+    "translation_tr": "Dakik, zamanında",
+    "example_sentence": "Der Zug ist pünktlich.",
+    "topic": "Saat kaç?",
+    "pos": "adjective"
+  },
+  {
+    "word": "Uhrzeit",
+    "article": "die",
+    "translation_tr": "Saat vakti",
+    "example_sentence": "Wie spät ist es?",
+    "topic": "Saat kaç?",
+    "pos": "noun"
+  },
+  {
+    "word": "Wetter",
+    "article": "das",
+    "translation_tr": "Hava durumu",
+    "example_sentence": "Das Wetter ist schön heute.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Sonne",
+    "article": "die",
+    "translation_tr": "Güneş",
+    "example_sentence": "Die Sonne scheint.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Regen",
+    "article": "der",
+    "translation_tr": "Yağmur",
+    "example_sentence": "Es gibt Regen heute.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Schnee",
+    "article": "der",
+    "translation_tr": "Kar",
+    "example_sentence": "Im Winter fällt Schnee.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Wind",
+    "article": "der",
+    "translation_tr": "Rüzgar",
+    "example_sentence": "Der Wind ist stark.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Wolke",
+    "article": "die",
+    "translation_tr": "Bulut",
+    "example_sentence": "Der Himmel ist voller Wolken.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "kalt",
+    "article": "—",
+    "translation_tr": "Soğuk",
+    "example_sentence": "Im Winter ist es kalt.",
+    "topic": "Hava durumu",
+    "pos": "adjective"
+  },
+  {
+    "word": "warm",
+    "article": "—",
+    "translation_tr": "Sıcak (ılık)",
+    "example_sentence": "Im Frühling ist es warm.",
+    "topic": "Hava durumu",
+    "pos": "adjective"
+  },
+  {
+    "word": "heiß",
+    "article": "—",
+    "translation_tr": "Çok sıcak",
+    "example_sentence": "Im Sommer ist es heiß.",
+    "topic": "Hava durumu",
+    "pos": "adjective"
+  },
+  {
+    "word": "nass",
+    "article": "—",
+    "translation_tr": "Islak",
+    "example_sentence": "Es regnet — ich bin nass.",
+    "topic": "Hava durumu",
+    "pos": "adjective"
+  },
+  {
+    "word": "Gewitter",
+    "article": "das",
+    "translation_tr": "Fırtına, gök gürültüsü",
+    "example_sentence": "Heute Abend gibt es ein Gewitter.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Nebel",
+    "article": "der",
+    "translation_tr": "Sis",
+    "example_sentence": "Morgens gibt es Nebel.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "sonnig",
+    "article": "—",
+    "translation_tr": "Güneşli",
+    "example_sentence": "Es ist sonnig und warm.",
+    "topic": "Hava durumu",
+    "pos": "adjective"
+  },
+  {
+    "word": "regnen",
+    "article": "—",
+    "translation_tr": "Yağmur yağmak",
+    "example_sentence": "Es regnet heute.",
+    "topic": "Hava durumu",
+    "pos": "verb"
+  },
+  {
+    "word": "schneien",
+    "article": "—",
+    "translation_tr": "Kar yağmak",
+    "example_sentence": "Es schneit im Winter.",
+    "topic": "Hava durumu",
+    "pos": "verb"
+  },
+  {
+    "word": "Temperatur",
+    "article": "die",
+    "translation_tr": "Sıcaklık derecesi",
+    "example_sentence": "Die Temperatur ist fünf Grad.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Grad",
+    "article": "der",
+    "translation_tr": "Derece",
+    "example_sentence": "Es ist zwanzig Grad warm.",
+    "topic": "Hava durumu",
+    "pos": "noun"
+  },
+  {
+    "word": "Haus",
+    "article": "das",
+    "translation_tr": "Ev, bina",
+    "example_sentence": "Wir haben ein großes Haus.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Wohnung",
+    "article": "die",
+    "translation_tr": "Daire",
+    "example_sentence": "Meine Wohnung ist im dritten Stock.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Zimmer",
+    "article": "das",
+    "translation_tr": "Oda",
+    "example_sentence": "Mein Zimmer ist groß.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Küche",
+    "article": "die",
+    "translation_tr": "Mutfak",
+    "example_sentence": "Ich koche in der Küche.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Badezimmer",
+    "article": "das",
+    "translation_tr": "Banyo",
+    "example_sentence": "Das Badezimmer ist klein.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Schlafzimmer",
+    "article": "das",
+    "translation_tr": "Yatak odası",
+    "example_sentence": "Das Schlafzimmer hat zwei Betten.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Wohnzimmer",
+    "article": "das",
+    "translation_tr": "Oturma odası",
+    "example_sentence": "Wir sitzen im Wohnzimmer.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Esszimmer",
+    "article": "das",
+    "translation_tr": "Yemek odası",
+    "example_sentence": "Wir essen im Esszimmer.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Keller",
+    "article": "der",
+    "translation_tr": "Bodrum",
+    "example_sentence": "Im Keller ist es kalt.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Garten",
+    "article": "der",
+    "translation_tr": "Bahçe",
+    "example_sentence": "Die Kinder spielen im Garten.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Balkon",
+    "article": "der",
+    "translation_tr": "Balkon",
+    "example_sentence": "Ich frühstücke auf dem Balkon.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Treppe",
+    "article": "die",
+    "translation_tr": "Merdiven",
+    "example_sentence": "Ich gehe die Treppe hoch.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Flur",
+    "article": "der",
+    "translation_tr": "Koridor, hol",
+    "example_sentence": "Die Jacke hängt im Flur.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Toilette",
+    "article": "die",
+    "translation_tr": "Tuvalet",
+    "example_sentence": "Wo ist die Toilette?",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Sofa",
+    "article": "das",
+    "translation_tr": "Kanepe",
+    "example_sentence": "Ich sitze auf dem Sofa.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Bett",
+    "article": "das",
+    "translation_tr": "Yatak",
+    "example_sentence": "Ich gehe ins Bett.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Schrank",
+    "article": "der",
+    "translation_tr": "Dolap",
+    "example_sentence": "Die Kleider sind im Schrank.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Regal",
+    "article": "das",
+    "translation_tr": "Kitaplık, raf",
+    "example_sentence": "Bücher stehen im Regal.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Teppich",
+    "article": "der",
+    "translation_tr": "Halı",
+    "example_sentence": "Der Teppich ist rot.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Herd",
+    "article": "der",
+    "translation_tr": "Ocak",
+    "example_sentence": "Ich koche auf dem Herd.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Kühlschrank",
+    "article": "der",
+    "translation_tr": "Buzdolabı",
+    "example_sentence": "Die Milch ist im Kühlschrank.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Waschmaschine",
+    "article": "die",
+    "translation_tr": "Çamaşır makinesi",
+    "example_sentence": "Ich wasche in der Waschmaschine.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Dusche",
+    "article": "die",
+    "translation_tr": "Duş",
+    "example_sentence": "Ich dusche jeden Morgen.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Spiegel",
+    "article": "der",
+    "translation_tr": "Ayna",
+    "example_sentence": "Ich schaue in den Spiegel.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Vorhang",
+    "article": "der",
+    "translation_tr": "Perde",
+    "example_sentence": "Die Vorhänge sind blau.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Boden",
+    "article": "der",
+    "translation_tr": "Zemin, yer",
+    "example_sentence": "Der Boden ist sauber.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Wand",
+    "article": "die",
+    "translation_tr": "Duvar",
+    "example_sentence": "Das Bild hängt an der Wand.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Nachbar",
+    "article": "der",
+    "translation_tr": "Komşu",
+    "example_sentence": "Mein Nachbar ist sehr nett.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "mieten",
+    "article": "—",
+    "translation_tr": "Kiralamak",
+    "example_sentence": "Ich miete eine Wohnung.",
+    "topic": "Ev ve odalar",
+    "pos": "verb"
+  },
+  {
+    "word": "Miete",
+    "article": "die",
+    "translation_tr": "Kira",
+    "example_sentence": "Die Miete ist teuer.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Stock",
+    "article": "der",
+    "translation_tr": "Kat",
+    "example_sentence": "Ich wohne im zweiten Stock.",
+    "topic": "Ev ve odalar",
+    "pos": "noun"
+  },
+  {
+    "word": "Supermarkt",
+    "article": "der",
+    "translation_tr": "Süpermarket",
+    "example_sentence": "Ich kaufe im Supermarkt ein.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Markt",
+    "article": "der",
+    "translation_tr": "Pazar, çarşı",
+    "example_sentence": "Am Samstag gehe ich auf den Markt.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Geschäft",
+    "article": "das",
+    "translation_tr": "Dükkan, mağaza",
+    "example_sentence": "Das Geschäft ist um 20 Uhr zu.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "kaufen",
+    "article": "—",
+    "translation_tr": "Satın almak",
+    "example_sentence": "Ich kaufe Brot.",
+    "topic": "Alışveriş",
+    "pos": "verb"
+  },
+  {
+    "word": "kosten",
+    "article": "—",
+    "translation_tr": "Fiyatı olmak",
+    "example_sentence": "Was kostet das?",
+    "topic": "Alışveriş",
+    "pos": "verb"
+  },
+  {
+    "word": "Preis",
+    "article": "der",
+    "translation_tr": "Fiyat",
+    "example_sentence": "Der Preis ist zu hoch.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Euro",
+    "article": "der",
+    "translation_tr": "Avro",
+    "example_sentence": "Das kostet zehn Euro.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Cent",
+    "article": "der",
+    "translation_tr": "Sent",
+    "example_sentence": "Das kostet fünfzig Cent.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "billig",
+    "article": "—",
+    "translation_tr": "Ucuz",
+    "example_sentence": "Das ist sehr billig.",
+    "topic": "Alışveriş",
+    "pos": "adjective"
+  },
+  {
+    "word": "teuer",
+    "article": "—",
+    "translation_tr": "Pahalı",
+    "example_sentence": "Das ist zu teuer.",
+    "topic": "Alışveriş",
+    "pos": "adjective"
+  },
+  {
+    "word": "Kleidung",
+    "article": "die",
+    "translation_tr": "Kıyafet, giysi",
+    "example_sentence": "Ich kaufe neue Kleidung.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Hemd",
+    "article": "das",
+    "translation_tr": "Gömlek",
+    "example_sentence": "Das Hemd ist weiß.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Hose",
+    "article": "die",
+    "translation_tr": "Pantolon",
+    "example_sentence": "Ich kaufe eine neue Hose.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Jacke",
+    "article": "die",
+    "translation_tr": "Mont, ceket",
+    "example_sentence": "Nimm eine Jacke mit!",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Schuhe",
+    "article": "die",
+    "translation_tr": "Ayakkabı",
+    "example_sentence": "Meine Schuhe sind neu.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Kleid",
+    "article": "das",
+    "translation_tr": "Elbise",
+    "example_sentence": "Das Kleid ist schön.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Rock",
+    "article": "der",
+    "translation_tr": "Etek",
+    "example_sentence": "Der Rock ist blau.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "T-Shirt",
+    "article": "das",
+    "translation_tr": "Tişört",
+    "example_sentence": "Ich kaufe ein T-Shirt.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "bezahlen",
+    "article": "—",
+    "translation_tr": "Ödemek",
+    "example_sentence": "Ich bezahle mit Karte.",
+    "topic": "Alışveriş",
+    "pos": "verb"
+  },
+  {
+    "word": "Kasse",
+    "article": "die",
+    "translation_tr": "Kasa",
+    "example_sentence": "Bitte zahlen Sie an der Kasse.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Größe",
+    "article": "die",
+    "translation_tr": "Beden, ölçü",
+    "example_sentence": "Welche Größe haben Sie?",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "groß",
+    "article": "—",
+    "translation_tr": "Büyük",
+    "example_sentence": "Das Haus ist groß.",
+    "topic": "Alışveriş",
+    "pos": "adjective"
+  },
+  {
+    "word": "klein",
+    "article": "—",
+    "translation_tr": "Küçük",
+    "example_sentence": "Das Kind ist klein.",
+    "topic": "Alışveriş",
+    "pos": "adjective"
+  },
+  {
+    "word": "Quittung",
+    "article": "die",
+    "translation_tr": "Fiş, makbuz",
+    "example_sentence": "Kann ich eine Quittung haben?",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Bäckerei",
+    "article": "die",
+    "translation_tr": "Fırın, pastane",
+    "example_sentence": "Ich kaufe Brot in der Bäckerei.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Apotheke",
+    "article": "die",
+    "translation_tr": "Eczane",
+    "example_sentence": "Die Apotheke ist um die Ecke.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Pullover",
+    "article": "der",
+    "translation_tr": "Kazak",
+    "example_sentence": "Der Pullover ist warm.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Mantel",
+    "article": "der",
+    "translation_tr": "Palto",
+    "example_sentence": "Ich brauche einen warmen Mantel.",
+    "topic": "Alışveriş",
+    "pos": "noun"
+  },
+  {
+    "word": "Bus",
+    "article": "der",
+    "translation_tr": "Otobüs",
+    "example_sentence": "Ich fahre mit dem Bus.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Zug",
+    "article": "der",
+    "translation_tr": "Tren",
+    "example_sentence": "Der Zug fährt um neun Uhr ab.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "U-Bahn",
+    "article": "die",
+    "translation_tr": "Metro",
+    "example_sentence": "Ich fahre mit der U-Bahn.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Straßenbahn",
+    "article": "die",
+    "translation_tr": "Tramvay",
+    "example_sentence": "Die Straßenbahn kommt in zwei Minuten.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Auto",
+    "article": "das",
+    "translation_tr": "Araba",
+    "example_sentence": "Ich fahre mit dem Auto.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Taxi",
+    "article": "das",
+    "translation_tr": "Taksi",
+    "example_sentence": "Ich nehme ein Taxi.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Flugzeug",
+    "article": "das",
+    "translation_tr": "Uçak",
+    "example_sentence": "Ich fliege mit dem Flugzeug.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Schiff",
+    "article": "das",
+    "translation_tr": "Gemi",
+    "example_sentence": "Wir fahren mit dem Schiff.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Bahnhof",
+    "article": "der",
+    "translation_tr": "Tren istasyonu, gar",
+    "example_sentence": "Der Bahnhof ist in der Stadtmitte.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Haltestelle",
+    "article": "die",
+    "translation_tr": "Durak",
+    "example_sentence": "Die Haltestelle ist hier.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Flughafen",
+    "article": "der",
+    "translation_tr": "Havalimanı",
+    "example_sentence": "Der Flughafen ist weit.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "fahren",
+    "article": "—",
+    "translation_tr": "Araçla gitmek, sürmek",
+    "example_sentence": "Ich fahre mit dem Bus.",
+    "topic": "Ulaşım",
+    "pos": "verb"
+  },
+  {
+    "word": "fliegen",
+    "article": "—",
+    "translation_tr": "Uçmak",
+    "example_sentence": "Ich fliege nach Berlin.",
+    "topic": "Ulaşım",
+    "pos": "verb"
+  },
+  {
+    "word": "gehen",
+    "article": "—",
+    "translation_tr": "Yürümek, gitmek",
+    "example_sentence": "Ich gehe zur Schule.",
+    "topic": "Ulaşım",
+    "pos": "verb"
+  },
+  {
+    "word": "abfahren",
+    "article": "—",
+    "translation_tr": "Hareket etmek (araç)",
+    "example_sentence": "Der Zug fährt um neun ab.",
+    "topic": "Ulaşım",
+    "pos": "verb"
+  },
+  {
+    "word": "ankommen",
+    "article": "—",
+    "translation_tr": "Varmak, ulaşmak",
+    "example_sentence": "Wann kommst du an?",
+    "topic": "Ulaşım",
+    "pos": "verb"
+  },
+  {
+    "word": "Fahrkarte",
+    "article": "die",
+    "translation_tr": "Bilet",
+    "example_sentence": "Ich kaufe eine Fahrkarte.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "links",
+    "article": "—",
+    "translation_tr": "Sol, sola",
+    "example_sentence": "Biegen Sie links ab.",
+    "topic": "Ulaşım",
+    "pos": "adverb"
+  },
+  {
+    "word": "rechts",
+    "article": "—",
+    "translation_tr": "Sağ, sağa",
+    "example_sentence": "Biegen Sie rechts ab.",
+    "topic": "Ulaşım",
+    "pos": "adverb"
+  },
+  {
+    "word": "geradeaus",
+    "article": "—",
+    "translation_tr": "Düz, doğruca",
+    "example_sentence": "Gehen Sie geradeaus.",
+    "topic": "Ulaşım",
+    "pos": "adverb"
+  },
+  {
+    "word": "weit",
+    "article": "—",
+    "translation_tr": "Uzak",
+    "example_sentence": "Der Bahnhof ist weit.",
+    "topic": "Ulaşım",
+    "pos": "adjective"
+  },
+  {
+    "word": "nah",
+    "article": "—",
+    "translation_tr": "Yakın",
+    "example_sentence": "Die Schule ist nah.",
+    "topic": "Ulaşım",
+    "pos": "adjective"
+  },
+  {
+    "word": "Weg",
+    "article": "der",
+    "translation_tr": "Yol, patika",
+    "example_sentence": "Der Weg ist lang.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Kreuzung",
+    "article": "die",
+    "translation_tr": "Kavşak",
+    "example_sentence": "An der Kreuzung links abbiegen.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Ampel",
+    "article": "die",
+    "translation_tr": "Trafik lambası",
+    "example_sentence": "Die Ampel ist rot.",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Parkplatz",
+    "article": "der",
+    "translation_tr": "Otopark, park yeri",
+    "example_sentence": "Gibt es hier einen Parkplatz?",
+    "topic": "Ulaşım",
+    "pos": "noun"
+  },
+  {
+    "word": "Kopf",
+    "article": "der",
+    "translation_tr": "Baş, kafa",
+    "example_sentence": "Mein Kopf tut weh.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Haar",
+    "article": "das",
+    "translation_tr": "Saç",
+    "example_sentence": "Meine Haare sind lang.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Gesicht",
+    "article": "das",
+    "translation_tr": "Yüz",
+    "example_sentence": "Sie hat ein schönes Gesicht.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Auge",
+    "article": "das",
+    "translation_tr": "Göz",
+    "example_sentence": "Meine Augen sind braun.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Ohr",
+    "article": "das",
+    "translation_tr": "Kulak",
+    "example_sentence": "Meine Ohren sind kalt.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Nase",
+    "article": "die",
+    "translation_tr": "Burun",
+    "example_sentence": "Meine Nase ist rot.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Mund",
+    "article": "der",
+    "translation_tr": "Ağız",
+    "example_sentence": "Mach den Mund auf.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Zahn",
+    "article": "der",
+    "translation_tr": "Diş",
+    "example_sentence": "Ich putze die Zähne.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Hals",
+    "article": "der",
+    "translation_tr": "Boyun, boğaz",
+    "example_sentence": "Mein Hals tut weh.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Schulter",
+    "article": "die",
+    "translation_tr": "Omuz",
+    "example_sentence": "Meine Schulter schmerzt.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Arm",
+    "article": "der",
+    "translation_tr": "Kol",
+    "example_sentence": "Er hat einen langen Arm.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Hand",
+    "article": "die",
+    "translation_tr": "El",
+    "example_sentence": "Gib mir die Hand.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Finger",
+    "article": "der",
+    "translation_tr": "Parmak",
+    "example_sentence": "Ich habe zehn Finger.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Bauch",
+    "article": "der",
+    "translation_tr": "Karın",
+    "example_sentence": "Mein Bauch tut weh.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Rücken",
+    "article": "der",
+    "translation_tr": "Sırt",
+    "example_sentence": "Mein Rücken schmerzt.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Bein",
+    "article": "das",
+    "translation_tr": "Bacak",
+    "example_sentence": "Er hat lange Beine.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Knie",
+    "article": "das",
+    "translation_tr": "Diz",
+    "example_sentence": "Mein Knie tut weh.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Fuß",
+    "article": "der",
+    "translation_tr": "Ayak",
+    "example_sentence": "Mein Fuß schmerzt.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Herz",
+    "article": "das",
+    "translation_tr": "Kalp",
+    "example_sentence": "Das Herz schlägt schnell.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Körper",
+    "article": "der",
+    "translation_tr": "Vücut, beden",
+    "example_sentence": "Sport ist gut für den Körper.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "krank",
+    "article": "—",
+    "translation_tr": "Hasta",
+    "example_sentence": "Ich bin krank.",
+    "topic": "Vücut",
+    "pos": "adjective"
+  },
+  {
+    "word": "gesund",
+    "article": "—",
+    "translation_tr": "Sağlıklı",
+    "example_sentence": "Ich bin gesund.",
+    "topic": "Vücut",
+    "pos": "adjective"
+  },
+  {
+    "word": "Schmerz",
+    "article": "der",
+    "translation_tr": "Ağrı, acı",
+    "example_sentence": "Ich habe Schmerzen.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Arzttermin",
+    "article": "der",
+    "translation_tr": "Doktor randevusu",
+    "example_sentence": "Ich habe morgen einen Arzttermin.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "Medikament",
+    "article": "das",
+    "translation_tr": "İlaç",
+    "example_sentence": "Der Arzt gibt mir ein Medikament.",
+    "topic": "Vücut",
+    "pos": "noun"
+  },
+  {
+    "word": "glücklich",
+    "article": "—",
+    "translation_tr": "Mutlu",
+    "example_sentence": "Ich bin glücklich.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "traurig",
+    "article": "—",
+    "translation_tr": "Üzgün",
+    "example_sentence": "Er ist traurig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "müde",
+    "article": "—",
+    "translation_tr": "Yorgun",
+    "example_sentence": "Ich bin sehr müde.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "aufgeregt",
+    "article": "—",
+    "translation_tr": "Heyecanlı",
+    "example_sentence": "Das Kind ist aufgeregt.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "ängstlich",
+    "article": "—",
+    "translation_tr": "Korkmuş, endişeli",
+    "example_sentence": "Das Kind ist ängstlich.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "wütend",
+    "article": "—",
+    "translation_tr": "Kızgın, sinirli",
+    "example_sentence": "Er ist wütend.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "überrascht",
+    "article": "—",
+    "translation_tr": "Şaşırmış",
+    "example_sentence": "Sie ist überrascht.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "zufrieden",
+    "article": "—",
+    "translation_tr": "Memnun",
+    "example_sentence": "Ich bin zufrieden.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "nervös",
+    "article": "—",
+    "translation_tr": "Sinirli, gergin",
+    "example_sentence": "Ich bin nervös.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "schön",
+    "article": "—",
+    "translation_tr": "Güzel",
+    "example_sentence": "Das Wetter ist schön.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "hässlich",
+    "article": "—",
+    "translation_tr": "Çirkin",
+    "example_sentence": "Das Wetter ist hässlich heute.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "richtig",
+    "article": "—",
+    "translation_tr": "Doğru",
+    "example_sentence": "Das ist richtig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "falsch",
+    "article": "—",
+    "translation_tr": "Yanlış",
+    "example_sentence": "Das ist falsch.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "schnell",
+    "article": "—",
+    "translation_tr": "Hızlı",
+    "example_sentence": "Der Zug ist schnell.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "langsam",
+    "article": "—",
+    "translation_tr": "Yavaş",
+    "example_sentence": "Sprich langsam, bitte.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "laut",
+    "article": "—",
+    "translation_tr": "Yüksek sesli, gürültülü",
+    "example_sentence": "Die Musik ist zu laut.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "leise",
+    "article": "—",
+    "translation_tr": "Sessiz, alçak sesli",
+    "example_sentence": "Sprich leise, bitte.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "einfach",
+    "article": "—",
+    "translation_tr": "Kolay, basit",
+    "example_sentence": "Das ist einfach.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "schwierig",
+    "article": "—",
+    "translation_tr": "Zor, güç",
+    "example_sentence": "Das ist schwierig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "interessant",
+    "article": "—",
+    "translation_tr": "İlginç",
+    "example_sentence": "Das Buch ist interessant.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "langweilig",
+    "article": "—",
+    "translation_tr": "Sıkıcı",
+    "example_sentence": "Der Film ist langweilig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "wichtig",
+    "article": "—",
+    "translation_tr": "Önemli",
+    "example_sentence": "Das ist wichtig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "freundlich",
+    "article": "—",
+    "translation_tr": "Nazik, arkadaş canlısı",
+    "example_sentence": "Der Lehrer ist freundlich.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "nett",
+    "article": "—",
+    "translation_tr": "Hoş, kibar",
+    "example_sentence": "Sie ist sehr nett.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "lustig",
+    "article": "—",
+    "translation_tr": "Komik, eğlenceli",
+    "example_sentence": "Der Film ist lustig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "fleißig",
+    "article": "—",
+    "translation_tr": "Çalışkan",
+    "example_sentence": "Sie ist sehr fleißig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "faul",
+    "article": "—",
+    "translation_tr": "Tembel",
+    "example_sentence": "Er ist heute faul.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "sauber",
+    "article": "—",
+    "translation_tr": "Temiz",
+    "example_sentence": "Das Zimmer ist sauber.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "schmutzig",
+    "article": "—",
+    "translation_tr": "Kirli",
+    "example_sentence": "Die Hände sind schmutzig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "hungrig",
+    "article": "—",
+    "translation_tr": "Aç",
+    "example_sentence": "Ich bin sehr hungrig.",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "durstig",
+    "article": "—",
+    "translation_tr": "Susuz",
+    "example_sentence": "Bist du durstig?",
+    "topic": "Duygular ve sıfatlar",
+    "pos": "adjective"
+  },
+  {
+    "word": "machen",
+    "article": "—",
+    "translation_tr": "Yapmak",
+    "example_sentence": "Was machst du?",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "sehen",
+    "article": "—",
+    "translation_tr": "Görmek",
+    "example_sentence": "Ich sehe einen Hund.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "hören",
+    "article": "—",
+    "translation_tr": "Duymak, dinlemek",
+    "example_sentence": "Ich höre Musik.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "lesen",
+    "article": "—",
+    "translation_tr": "Okumak",
+    "example_sentence": "Ich lese ein Buch.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "schreiben",
+    "article": "—",
+    "translation_tr": "Yazmak",
+    "example_sentence": "Ich schreibe einen Brief.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "antworten",
+    "article": "—",
+    "translation_tr": "Cevap vermek",
+    "example_sentence": "Ich antworte auf die Frage.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "fragen",
+    "article": "—",
+    "translation_tr": "Sormak",
+    "example_sentence": "Ich frage den Lehrer.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "helfen",
+    "article": "—",
+    "translation_tr": "Yardım etmek",
+    "example_sentence": "Ich helfe dir.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "spielen",
+    "article": "—",
+    "translation_tr": "Oynamak",
+    "example_sentence": "Die Kinder spielen.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "schlafen",
+    "article": "—",
+    "translation_tr": "Uyumak",
+    "example_sentence": "Ich schlafe acht Stunden.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "aufstehen",
+    "article": "—",
+    "translation_tr": "Kalkmak, ayağa kalkmak",
+    "example_sentence": "Ich stehe um sieben auf.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "laufen",
+    "article": "—",
+    "translation_tr": "Koşmak, yürümek",
+    "example_sentence": "Ich laufe jeden Morgen.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "stehen",
+    "article": "—",
+    "translation_tr": "Ayakta durmak",
+    "example_sentence": "Ich stehe an der Haltestelle.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "sitzen",
+    "article": "—",
+    "translation_tr": "Oturmak",
+    "example_sentence": "Ich sitze auf dem Stuhl.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "liegen",
+    "article": "—",
+    "translation_tr": "Yatmak, uzanmak",
+    "example_sentence": "Das Buch liegt auf dem Tisch.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "tanzen",
+    "article": "—",
+    "translation_tr": "Dans etmek",
+    "example_sentence": "Ich tanze gern.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "singen",
+    "article": "—",
+    "translation_tr": "Şarkı söylemek",
+    "example_sentence": "Sie singt schön.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "schwimmen",
+    "article": "—",
+    "translation_tr": "Yüzmek",
+    "example_sentence": "Ich schwimme im Sommer.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "nehmen",
+    "article": "—",
+    "translation_tr": "Almak",
+    "example_sentence": "Ich nehme den Bus.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "geben",
+    "article": "—",
+    "translation_tr": "Vermek",
+    "example_sentence": "Ich gebe dir das Buch.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "bringen",
+    "article": "—",
+    "translation_tr": "Getirmek",
+    "example_sentence": "Bringst du mir Wasser?",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "öffnen",
+    "article": "—",
+    "translation_tr": "Açmak",
+    "example_sentence": "Öffne das Fenster, bitte.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "schließen",
+    "article": "—",
+    "translation_tr": "Kapatmak",
+    "example_sentence": "Schließ die Tür.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "warten",
+    "article": "—",
+    "translation_tr": "Beklemek",
+    "example_sentence": "Ich warte auf den Bus.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "anrufen",
+    "article": "—",
+    "translation_tr": "Aramak (telefon)",
+    "example_sentence": "Ich rufe dich an.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "besuchen",
+    "article": "—",
+    "translation_tr": "Ziyaret etmek",
+    "example_sentence": "Ich besuche meine Eltern.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "treffen",
+    "article": "—",
+    "translation_tr": "Buluşmak, rastlamak",
+    "example_sentence": "Wir treffen uns um drei.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "suchen",
+    "article": "—",
+    "translation_tr": "Aramak",
+    "example_sentence": "Ich suche meine Brille.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "finden",
+    "article": "—",
+    "translation_tr": "Bulmak",
+    "example_sentence": "Ich finde das Buch nicht.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "wissen",
+    "article": "—",
+    "translation_tr": "Bilmek (bir gerçeği)",
+    "example_sentence": "Ich weiß das nicht.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "kennen",
+    "article": "—",
+    "translation_tr": "Tanımak, bilmek (birini)",
+    "example_sentence": "Ich kenne ihn gut.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "denken",
+    "article": "—",
+    "translation_tr": "Düşünmek",
+    "example_sentence": "Ich denke an dich.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "brauchen",
+    "article": "—",
+    "translation_tr": "İhtiyacı olmak",
+    "example_sentence": "Ich brauche Hilfe.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "mögen",
+    "article": "—",
+    "translation_tr": "Sevmek, hoşlanmak",
+    "example_sentence": "Ich mag Kaffee.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "können",
+    "article": "—",
+    "translation_tr": "Yapabilmek",
+    "example_sentence": "Ich kann Deutsch sprechen.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "müssen",
+    "article": "—",
+    "translation_tr": "Zorunda olmak",
+    "example_sentence": "Ich muss arbeiten.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "wollen",
+    "article": "—",
+    "translation_tr": "İstemek",
+    "example_sentence": "Ich will Deutsch lernen.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "dürfen",
+    "article": "—",
+    "translation_tr": "İzni olmak (yapabilmek)",
+    "example_sentence": "Darf ich fragen?",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "sollen",
+    "article": "—",
+    "translation_tr": "Yapması lazım olmak",
+    "example_sentence": "Du sollst pünktlich sein.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "werden",
+    "article": "—",
+    "translation_tr": "Olmak (gelecek), haline gelmek",
+    "example_sentence": "Ich werde Arzt.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "zeigen",
+    "article": "—",
+    "translation_tr": "Göstermek",
+    "example_sentence": "Zeig mir das Buch.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "backen",
+    "article": "—",
+    "translation_tr": "Pişirmek (fırında)",
+    "example_sentence": "Ich backe einen Kuchen.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "waschen",
+    "article": "—",
+    "translation_tr": "Yıkamak",
+    "example_sentence": "Ich wasche die Hände.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "putzen",
+    "article": "—",
+    "translation_tr": "Temizlemek",
+    "example_sentence": "Ich putze das Zimmer.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "einladen",
+    "article": "—",
+    "translation_tr": "Davet etmek",
+    "example_sentence": "Ich lade dich ein.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "schicken",
+    "article": "—",
+    "translation_tr": "Göndermek",
+    "example_sentence": "Ich schicke dir eine E-Mail.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "reparieren",
+    "article": "—",
+    "translation_tr": "Tamir etmek",
+    "example_sentence": "Ich repariere das Auto.",
+    "topic": "Temel fiiller",
+    "pos": "verb"
+  },
+  {
+    "word": "und",
+    "article": "—",
+    "translation_tr": "Ve",
+    "example_sentence": "Ich esse Brot und Käse.",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "oder",
+    "article": "—",
+    "translation_tr": "Veya, ya da",
+    "example_sentence": "Kaffee oder Tee?",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "aber",
+    "article": "—",
+    "translation_tr": "Ama, fakat",
+    "example_sentence": "Ich will, aber ich kann nicht.",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "weil",
+    "article": "—",
+    "translation_tr": "Çünkü",
+    "example_sentence": "Ich bin müde, weil ich nicht schlafe.",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "dass",
+    "article": "—",
+    "translation_tr": "-diği, -dığını (bağlaç)",
+    "example_sentence": "Ich denke, dass es gut ist.",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "wenn",
+    "article": "—",
+    "translation_tr": "Eğer, -ince",
+    "example_sentence": "Wenn es regnet, bleibe ich zu Hause.",
+    "topic": "Temel kelimeler",
+    "pos": "conjunction"
+  },
+  {
+    "word": "hier",
+    "article": "—",
+    "translation_tr": "Burada",
+    "example_sentence": "Ich bin hier.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "dort",
+    "article": "—",
+    "translation_tr": "Orada",
+    "example_sentence": "Er wohnt dort.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "oben",
+    "article": "—",
+    "translation_tr": "Yukarıda",
+    "example_sentence": "Das Buch ist oben.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "unten",
+    "article": "—",
+    "translation_tr": "Aşağıda",
+    "example_sentence": "Der Keller ist unten.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "immer",
+    "article": "—",
+    "translation_tr": "Her zaman",
+    "example_sentence": "Ich trinke immer Wasser.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "nie",
+    "article": "—",
+    "translation_tr": "Hiçbir zaman",
+    "example_sentence": "Ich rauche nie.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "oft",
+    "article": "—",
+    "translation_tr": "Sık sık",
+    "example_sentence": "Ich esse oft Pizza.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "manchmal",
+    "article": "—",
+    "translation_tr": "Bazen",
+    "example_sentence": "Manchmal koche ich selbst.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "sehr",
+    "article": "—",
+    "translation_tr": "Çok",
+    "example_sentence": "Das ist sehr gut.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "auch",
+    "article": "—",
+    "translation_tr": "De, da, ayrıca",
+    "example_sentence": "Ich auch.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "noch",
+    "article": "—",
+    "translation_tr": "Hâlâ, daha",
+    "example_sentence": "Ich bin noch müde.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "schon",
+    "article": "—",
+    "translation_tr": "Zaten, çoktan",
+    "example_sentence": "Ich bin schon fertig.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "wieder",
+    "article": "—",
+    "translation_tr": "Yeniden, tekrar",
+    "example_sentence": "Ich komme wieder.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "zusammen",
+    "article": "—",
+    "translation_tr": "Birlikte",
+    "example_sentence": "Wir essen zusammen.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "allein",
+    "article": "—",
+    "translation_tr": "Yalnız",
+    "example_sentence": "Ich bin allein.",
+    "topic": "Temel kelimeler",
+    "pos": "adjective"
+  },
+  {
+    "word": "später",
+    "article": "—",
+    "translation_tr": "Sonra, daha sonra",
+    "example_sentence": "Bis später!",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "bald",
+    "article": "—",
+    "translation_tr": "Yakında",
+    "example_sentence": "Bis bald!",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "sofort",
+    "article": "—",
+    "translation_tr": "Hemen",
+    "example_sentence": "Komm sofort!",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "vielleicht",
+    "article": "—",
+    "translation_tr": "Belki",
+    "example_sentence": "Vielleicht komme ich.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "natürlich",
+    "article": "—",
+    "translation_tr": "Tabii ki, elbette",
+    "example_sentence": "Natürlich helfe ich dir.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "leider",
+    "article": "—",
+    "translation_tr": "Maalesef",
+    "example_sentence": "Leider kann ich nicht kommen.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "gern",
+    "article": "—",
+    "translation_tr": "Memnuniyetle, hoşlanarak",
+    "example_sentence": "Ich esse gern Pizza.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "nicht",
+    "article": "—",
+    "translation_tr": "Değil",
+    "example_sentence": "Das ist nicht gut.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "kein",
+    "article": "—",
+    "translation_tr": "Hiç, sıfır",
+    "example_sentence": "Ich habe kein Geld.",
+    "topic": "Temel kelimeler",
+    "pos": "adjective"
+  },
+  {
+    "word": "alles",
+    "article": "—",
+    "translation_tr": "Her şey",
+    "example_sentence": "Alles ist gut.",
+    "topic": "Temel kelimeler",
+    "pos": "pronoun"
+  },
+  {
+    "word": "nichts",
+    "article": "—",
+    "translation_tr": "Hiçbir şey",
+    "example_sentence": "Ich verstehe nichts.",
+    "topic": "Temel kelimeler",
+    "pos": "pronoun"
+  },
+  {
+    "word": "wo",
+    "article": "—",
+    "translation_tr": "Nerede",
+    "example_sentence": "Wo bist du?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "woher",
+    "article": "—",
+    "translation_tr": "Nereden",
+    "example_sentence": "Woher kommst du?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "wohin",
+    "article": "—",
+    "translation_tr": "Nereye",
+    "example_sentence": "Wohin gehst du?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "wann",
+    "article": "—",
+    "translation_tr": "Ne zaman",
+    "example_sentence": "Wann kommst du?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "wie",
+    "article": "—",
+    "translation_tr": "Nasıl",
+    "example_sentence": "Wie heißt du?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "was",
+    "article": "—",
+    "translation_tr": "Ne",
+    "example_sentence": "Was machst du?",
+    "topic": "Temel kelimeler",
+    "pos": "pronoun"
+  },
+  {
+    "word": "wer",
+    "article": "—",
+    "translation_tr": "Kim",
+    "example_sentence": "Wer bist du?",
+    "topic": "Temel kelimeler",
+    "pos": "pronoun"
+  },
+  {
+    "word": "warum",
+    "article": "—",
+    "translation_tr": "Neden, niçin",
+    "example_sentence": "Warum bist du müde?",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "in",
+    "article": "—",
+    "translation_tr": "İçinde, -de/-da",
+    "example_sentence": "Ich bin in der Schule.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "auf",
+    "article": "—",
+    "translation_tr": "Üzerinde, üstünde",
+    "example_sentence": "Das Buch liegt auf dem Tisch.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "mit",
+    "article": "—",
+    "translation_tr": "İle, birlikte",
+    "example_sentence": "Ich fahre mit dem Bus.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "zu",
+    "article": "—",
+    "translation_tr": "Doğru, -e/-a",
+    "example_sentence": "Ich gehe zu Hause.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "von",
+    "article": "—",
+    "translation_tr": "'-den/-dan; ait",
+    "example_sentence": "Das Buch ist von mir.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "bei",
+    "article": "—",
+    "translation_tr": "Yanında, katında",
+    "example_sentence": "Ich bin bei meiner Mutter.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "nach",
+    "article": "—",
+    "translation_tr": "Sonra; doğru (-e gitmek için)",
+    "example_sentence": "Ich fahre nach Berlin.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "aus",
+    "article": "—",
+    "translation_tr": "'-den/-dan (köken)",
+    "example_sentence": "Ich komme aus der Türkei.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "ohne",
+    "article": "—",
+    "translation_tr": "Olmadan, -siz/-sız",
+    "example_sentence": "Kaffee ohne Zucker.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "für",
+    "article": "—",
+    "translation_tr": "İçin",
+    "example_sentence": "Das ist für dich.",
+    "topic": "Temel kelimeler",
+    "pos": "preposition"
+  },
+  {
+    "word": "dann",
+    "article": "—",
+    "translation_tr": "Sonra, o zaman",
+    "example_sentence": "Erst arbeite ich, dann esse ich.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  },
+  {
+    "word": "trotzdem",
+    "article": "—",
+    "translation_tr": "Yine de, buna rağmen",
+    "example_sentence": "Es regnet, trotzdem gehe ich.",
+    "topic": "Temel kelimeler",
+    "pos": "adverb"
+  }
 ]

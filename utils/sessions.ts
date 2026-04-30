@@ -32,6 +32,7 @@ export async function getSessionContext(
       .from('vocabulary_cards')
       .select('*', { count: 'exact', head: true })
       .eq('user_id', userId)
+      .in('status', ['seen', 'struggling'])
       .lte('next_review_at', now),
   ]);
 

@@ -22,7 +22,7 @@ export const googleAI = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
 });
 
-export const GEMINI_MODEL = 'gemini-2.0-flash';
+export const GEMINI_MODEL = 'gemini-2.5-flash';
 
 export async function getUserData() {
   const supabase = await createClient();

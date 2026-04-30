@@ -8,12 +8,20 @@ export function stream(
 ) {
   return new ReadableStream({
     async pull(controller) {
-      const { value, done } = await iterator.next();
-
-      if (done) {
+      try {
+        const { value, done } = await iterator.next();
+        if (done) {
+          controller.close();
+        } else {
+          controller.enqueue(value);
+        }
+      } catch (err) {
+        console.error('[stream] generator error:', err);
+        const errorChunk = encoder.encode(
+          JSON.stringify({ type: 'response', text: '\n\n⚠️ Bir hata oluştu. Lütfen tekrar deneyin.' })
+        );
+        controller.enqueue(errorChunk);
         controller.close();
-      } else {
-        controller.enqueue(value);
       }
     },
   });

@@ -995,7 +995,7 @@ What's on your mind? Let's dive in. 🌱`,
               </div>
               <MessageList
                 ref={messageListRef}
-                messages={messages}
+                messages={isHydrated ? messages : initialMessages}
                 defaultMessage={defaultMessage}
                 userId={userId}
                 conversationId={conversationId}
@@ -1005,7 +1005,7 @@ What's on your mind? Let's dive in. 🌱`,
               <div className="absolute bottom-0 left-0 right-0 z-10">
                 <div className="h-3 lg:h-5  bg-gradient-to-b from-transparent to-background" />
                 <div className="bg-background py-3">
-                  {messages!.length > 1 && (
+                  {(isHydrated ? messages : initialMessages)!.length > 1 && (
                     <div className="disclaimer-text text-center mb-2">
                       Bloom can make mistakes. Always double-check important
                       information.

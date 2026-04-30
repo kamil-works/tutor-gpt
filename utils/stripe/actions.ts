@@ -15,9 +15,10 @@ import { Tables } from "@/utils/database.types";
 
 type Price = Tables<"prices">;
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-01-27.acacia",
-});
+const getStripe = () => {
+  if (!process.env.STRIPE_SECRET_KEY) throw new Error('Stripe is not configured');
+  return new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2025-01-27.acacia" });
+};
 
 type CheckoutResponse = {
   errorRedirect?: string;
@@ -96,7 +97,7 @@ export async function checkoutWithStripe(
     // Create a checkout session in Stripe
     let session;
     try {
-      session = await stripe.checkout.sessions.create(params);
+      session = await getStripe().checkout.sessions.create(params);
     } catch (err) {
       console.error(err);
       throw new Error("Unable to create checkout session.");
@@ -162,7 +163,7 @@ export async function createStripePortal() {
     }
 
     try {
-      const { url } = await stripe.billingPortal.sessions.create({
+      const { url } = await getStripe().billingPortal.sessions.create({
         customer,
         return_url: getURL("/settings"),
       });
