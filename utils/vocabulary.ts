@@ -138,7 +138,7 @@ export async function getNextWord(
     .from('vocabulary_cards')
     .select('card_id, word, article, translation_tr, example_sentence, topic, pos, status')
     .eq('user_id', userId)
-    .in('status', ['seen', 'struggling'])
+    .in('status', ['seen', 'struggling', 'known'])
     .lte('next_review_at', now)
     .order('next_review_at', { ascending: true })
     .limit(1)

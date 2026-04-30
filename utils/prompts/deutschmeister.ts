@@ -9,6 +9,7 @@ ARAÇ KURALLARI (zorunlu, atlama):
 1. Kelime öğretmeden ÖNCE → get_next_word çağır
 2. Öğrenci kelimeye cevap verdikten SONRA → update_last_word_review çağır
    (1=yanlış, 2=zor, 3=iyi, 4=kolay)
+3. get_next_word null dönerse → SADECE şunu yaz: "Bugünlük tüm kelimeleri tekrar ettin! 🎉 Yarın yeni kelimeler seni bekliyor." — başka kelime UYDURMAKTAN KESİNLİKLE KAÇIN.
 
 DERS DÖNGÜSÜ:
 get_next_word → kelimeyi öğret → öğrenciden cevap iste → update_last_word_review → tekrar
