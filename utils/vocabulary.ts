@@ -10,7 +10,8 @@ const ratingMap: Record<1 | 2 | 3 | 4, Rating> = {
   4: Rating.Easy,
 };
 
-const statusMap: Record<number, 'struggling' | 'seen' | 'known'> = {
+const statusMap: Record<Rating, 'struggling' | 'seen' | 'known'> = {
+  [Rating.Manual]: 'seen',
   [Rating.Again]: 'struggling',
   [Rating.Hard]: 'struggling',
   [Rating.Good]: 'seen',
@@ -202,7 +203,10 @@ export async function updateWordReview(
 
   // Build FSRS card from DB row, or start fresh if no FSRS data yet.
   // state === 0 means New — treat it as a fresh card to avoid invalid memory state errors.
-  const hasReviewHistory = current?.stability != null && (current?.state ?? 0) > 0;
+  const hasReviewHistory =
+    current?.stability != null &&
+    current.stability > 0 &&
+    (current?.state ?? 0) > 0;
   const fsrsCard: FSRSCard = hasReviewHistory
     ? {
         due: new Date(),
