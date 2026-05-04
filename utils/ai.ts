@@ -23,6 +23,7 @@ export const googleAI = createGoogleGenerativeAI({
 });
 
 export const GEMINI_MODEL = 'gemini-2.5-flash';
+export const GEMINI_OBSERVER_MODEL = 'gemini-2.0-flash';
 
 export async function getUserData() {
   const supabase = await createClient();

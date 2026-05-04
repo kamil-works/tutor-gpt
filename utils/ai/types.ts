@@ -48,4 +48,28 @@ export interface SessionContext {
   knownCount: number;
   dueCount: number;
   anxietySignal: 'low' | 'medium' | 'high';
+  thoughtHook?: ThoughtHookOutput;
 }
+
+export type TeachingMode = 'drill' | 'conversation' | 'sentence_production' | 'grammar_note';
+export type TeachingTechnique = 'tr_to_de' | 'de_to_tr' | 'fill_blank' | 'make_sentence' | 'free_chat' | 'error_correction';
+export type DifficultySignal = 'too_easy' | 'optimal' | 'too_hard';
+export type ErrorType = 'article' | 'verb_conjugation' | 'word_order' | 'vocabulary';
+
+export interface ThoughtHookOutput {
+  mode: TeachingMode;
+  technique: TeachingTechnique;
+  difficulty_signal: DifficultySignal;
+  error_spotted: ErrorType | null;
+  drill_count: number;
+  teaching_note: string;
+}
+
+export const THOUGHT_HOOK_FALLBACK: ThoughtHookOutput = {
+  mode: 'drill',
+  technique: 'tr_to_de',
+  difficulty_signal: 'optimal',
+  error_spotted: null,
+  drill_count: 0,
+  teaching_note: 'Başlangıç: kelime çalışmasıyla başla.',
+};
