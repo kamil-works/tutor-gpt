@@ -1,4 +1,21 @@
 import { createClient } from '@/utils/supabase/server';
+import { fsrs, generatorParameters, Rating, createEmptyCard, type Card as FSRSCard } from 'ts-fsrs';
+
+const f = fsrs(generatorParameters());
+
+const ratingMap: Record<1 | 2 | 3 | 4, Rating> = {
+  1: Rating.Again,
+  2: Rating.Hard,
+  3: Rating.Good,
+  4: Rating.Easy,
+};
+
+const statusMap: Record<number, 'struggling' | 'seen' | 'known'> = {
+  [Rating.Again]: 'struggling',
+  [Rating.Hard]: 'struggling',
+  [Rating.Good]: 'seen',
+  [Rating.Easy]: 'known',
+};
 
 export interface VocabularyCard {
   card_id: string;
@@ -177,35 +194,45 @@ export async function updateWordReview(
 ): Promise<{ next_review_at: string; status: string }> {
   const supabase = await createClient();
 
-  const statusMap: Record<number, 'struggling' | 'seen' | 'known'> = {
-    1: 'struggling',
-    2: 'struggling',
-    3: 'seen',
-    4: 'known',
-  };
-
-  const intervalDays: Record<number, number> = {
-    1: 0,
-    2: 0,
-    3: 3,
-    4: 7,
-  };
-
   const { data: current } = await supabase
     .from('vocabulary_cards')
-    .select('seen_count')
+    .select('stability, difficulty, elapsed_days, reps, lapses, state, last_seen_at, seen_count')
     .eq('card_id', wordId)
     .single();
 
-  const newStatus = statusMap[rating];
-  const nextReview = new Date();
-  nextReview.setDate(nextReview.getDate() + intervalDays[rating]);
-  const next_review_at = nextReview.toISOString();
+  // Build FSRS card from DB row, or start fresh if no FSRS data yet.
+  // state === 0 means New — treat it as a fresh card to avoid invalid memory state errors.
+  const hasReviewHistory = current?.stability != null && (current?.state ?? 0) > 0;
+  const fsrsCard: FSRSCard = hasReviewHistory
+    ? {
+        due: new Date(),
+        stability: current!.stability,
+        difficulty: current!.difficulty,
+        elapsed_days: current!.elapsed_days ?? 0,
+        scheduled_days: 0,
+        reps: current!.reps ?? 0,
+        lapses: current!.lapses ?? 0,
+        state: current!.state ?? 0,
+        last_review: current!.last_seen_at ? new Date(current!.last_seen_at) : undefined,
+      }
+    : createEmptyCard();
+
+  const fsrsRating = ratingMap[rating];
+  const scheduling = f.repeat(fsrsCard, new Date());
+  const newCard = scheduling[fsrsRating].card;
+  const newStatus = statusMap[fsrsRating];
+  const next_review_at = newCard.due.toISOString();
 
   await supabase.from('vocabulary_cards').update({
     status: newStatus,
     last_seen_at: new Date().toISOString(),
     next_review_at,
+    stability: newCard.stability,
+    difficulty: newCard.difficulty,
+    elapsed_days: newCard.elapsed_days,
+    reps: newCard.reps,
+    lapses: newCard.lapses,
+    state: newCard.state,
     seen_count: (current?.seen_count ?? 0) + 1,
   }).eq('card_id', wordId);
 

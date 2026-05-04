@@ -84,25 +84,70 @@ describe('getDueWords', () => {
 });
 
 describe('updateWordReview', () => {
-  it('sets status to struggling for rating 1', async () => {
-    mocks.chainable.single.mockResolvedValueOnce({ data: { seen_count: 2 }, error: null });
+  it('returns struggling status for rating 1', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: {
+        stability: 0,
+        difficulty: 5,
+        elapsed_days: 0,
+        reps: 0,
+        lapses: 0,
+        state: 0,
+        last_seen_at: null,
+      },
+      error: null,
+    });
 
     const result = await updateWordReview('card-1', 1);
     expect(result.status).toBe('struggling');
+    expect(typeof result.next_review_at).toBe('string');
   });
 
-  it('sets status to seen for rating 3', async () => {
-    mocks.chainable.single.mockResolvedValueOnce({ data: { seen_count: 1 }, error: null });
+  it('returns seen status for rating 3', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: {
+        stability: 2,
+        difficulty: 5,
+        elapsed_days: 3,
+        reps: 1,
+        lapses: 0,
+        state: 2,
+        last_seen_at: new Date().toISOString(),
+      },
+      error: null,
+    });
 
     const result = await updateWordReview('card-1', 3);
     expect(result.status).toBe('seen');
+    expect(typeof result.next_review_at).toBe('string');
   });
 
-  it('sets status to known for rating 4', async () => {
-    mocks.chainable.single.mockResolvedValueOnce({ data: { seen_count: 3 }, error: null });
+  it('returns known status for rating 4', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: {
+        stability: 4,
+        difficulty: 4,
+        elapsed_days: 7,
+        reps: 2,
+        lapses: 0,
+        state: 2,
+        last_seen_at: new Date().toISOString(),
+      },
+      error: null,
+    });
 
     const result = await updateWordReview('card-1', 4);
     expect(result.status).toBe('known');
+  });
+
+  it('falls back to new card when DB has no FSRS data', async () => {
+    mocks.chainable.single.mockResolvedValueOnce({
+      data: { stability: null, difficulty: null, elapsed_days: null, reps: null, lapses: null, state: null, last_seen_at: null },
+      error: null,
+    });
+
+    const result = await updateWordReview('card-1', 3);
+    expect(result.status).toBe('seen');
   });
 });
 
