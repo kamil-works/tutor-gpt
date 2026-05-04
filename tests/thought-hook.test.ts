@@ -94,3 +94,58 @@ describe('upsertLearnerProfile', () => {
     );
   });
 });
+
+import { generateText } from 'ai';
+import { runThoughtHook } from '@/utils/ai/thought';
+import { THOUGHT_HOOK_FALLBACK } from '@/utils/ai/types';
+
+describe('runThoughtHook', () => {
+  it('parses valid JSON response from LLM', async () => {
+    const validOutput = {
+      mode: 'conversation',
+      technique: 'free_chat',
+      difficulty_signal: 'optimal',
+      error_spotted: null,
+      drill_count: 3,
+      teaching_note: 'Sohbet aç.',
+    };
+    vi.mocked(generateText).mockResolvedValueOnce({ text: JSON.stringify(validOutput) } as any);
+
+    const result = await runThoughtHook({
+      recentMessages: [{ role: 'user', content: 'Hallo' }],
+      drillCount: 3,
+      errorPatterns: {},
+      sessionNotes: '',
+    });
+
+    expect(result.mode).toBe('conversation');
+    expect(result.technique).toBe('free_chat');
+    expect(result.error_spotted).toBeNull();
+  });
+
+  it('returns THOUGHT_HOOK_FALLBACK when LLM returns invalid JSON', async () => {
+    vi.mocked(generateText).mockResolvedValueOnce({ text: 'not json at all' } as any);
+
+    const result = await runThoughtHook({
+      recentMessages: [],
+      drillCount: 0,
+      errorPatterns: {},
+      sessionNotes: '',
+    });
+
+    expect(result).toEqual(THOUGHT_HOOK_FALLBACK);
+  });
+
+  it('returns THOUGHT_HOOK_FALLBACK when LLM call throws', async () => {
+    vi.mocked(generateText).mockRejectedValueOnce(new Error('API error'));
+
+    const result = await runThoughtHook({
+      recentMessages: [],
+      drillCount: 0,
+      errorPatterns: {},
+      sessionNotes: '',
+    });
+
+    expect(result).toEqual(THOUGHT_HOOK_FALLBACK);
+  });
+});
