@@ -40,12 +40,13 @@ export async function updateErrorPattern(
     ...profile.error_patterns,
     [errorType]: (profile.error_patterns[errorType] ?? 0) + 1,
   };
-  await supabase
+  const { error } = await supabase
     .from('learner_profiles')
     .upsert(
       { user_id: userId, error_patterns: updated, updated_at: new Date().toISOString() },
       { onConflict: 'user_id' }
     );
+  if (error) console.error('[learner-profile] upsert failed:', error.message);
 }
 
 export async function upsertLearnerProfile(
@@ -53,12 +54,13 @@ export async function upsertLearnerProfile(
   patch: Partial<Omit<LearnerProfile, 'user_id'>>
 ): Promise<void> {
   const supabase = await createClient();
-  await supabase
+  const { error } = await supabase
     .from('learner_profiles')
     .upsert(
       { user_id: userId, ...patch, updated_at: new Date().toISOString() },
       { onConflict: 'user_id' }
     );
+  if (error) console.error('[learner-profile] upsert failed:', error.message);
 }
 
 export async function updateDrillCount(
@@ -67,21 +69,24 @@ export async function updateDrillCount(
 ): Promise<void> {
   const supabase = await createClient();
   if (isConversationTurn) {
-    await supabase
+    const { error } = await supabase
       .from('learning_sessions')
       .update({ drill_count_since_conversation: 0 })
       .eq('session_id', sessionId);
+    if (error) console.error('[learner-profile] update drill_count (reset) failed:', error.message);
   } else {
+    // Note: read-modify-write — safe for single-user sessions, not safe for concurrent multi-user scenarios
     const { data } = await supabase
       .from('learning_sessions')
       .select('drill_count_since_conversation')
       .eq('session_id', sessionId)
       .maybeSingle();
     const current = data?.drill_count_since_conversation ?? 0;
-    await supabase
+    const { error } = await supabase
       .from('learning_sessions')
       .update({ drill_count_since_conversation: current + 1 })
       .eq('session_id', sessionId);
+    if (error) console.error('[learner-profile] update drill_count (increment) failed:', error.message);
   }
 }
 

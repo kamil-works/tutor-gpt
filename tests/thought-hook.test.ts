@@ -80,3 +80,17 @@ describe('updateErrorPattern', () => {
     );
   });
 });
+
+describe('upsertLearnerProfile', () => {
+  it('calls upsert with patched fields', async () => {
+    await upsertLearnerProfile('u1', { avg_rating: 2.8, session_notes: 'needs help' });
+    expect(mocks.chainable.upsert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        user_id: 'u1',
+        avg_rating: 2.8,
+        session_notes: 'needs help',
+      }),
+      expect.anything()
+    );
+  });
+});
