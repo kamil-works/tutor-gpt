@@ -57,7 +57,17 @@
       "Bash(echo \"started PID $!\")",
       "Bash(xargs ls *)",
       "Bash(echo \"PID $!\")",
-      "Bash(npm show *)"
+      "Bash(npm show *)",
+      "mcp__supabase__list_migrations",
+      "Bash(npx ts-node --project tsconfig.json -e ' *)",
+      "Bash(node -e ' *)",
+      "Bash(node --input-type=module)",
+      "Bash(echo \"PID: $!\" sleep 5 grep -E \"ready|error|Error|compiled\" /tmp/nextjs.log)",
+      "Bash(pnpm test *)",
+      "Bash(npx vitest *)",
+      "Bash(npx ts-node *)",
+      "Bash(node *)",
+      "Bash(git stash *)"
     ]
   },
   "enableAllProjectMcpServers": true,
