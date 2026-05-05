@@ -35,7 +35,7 @@ afterEach(async () => {
     collectionsToCleanup.map(({ appId, userId, collectionId }) =>
       honcho.apps.users.collections
         .delete(appId, userId, collectionId)
-        .catch((error) =>
+        .catch((error: unknown) =>
           console.warn(`Failed to cleanup collection ${collectionId}:`, error)
         )
     )

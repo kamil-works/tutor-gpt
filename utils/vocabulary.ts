@@ -10,12 +10,11 @@ const ratingMap: Record<1 | 2 | 3 | 4, Rating> = {
   4: Rating.Easy,
 };
 
-const statusMap: Record<Rating, 'struggling' | 'seen' | 'known'> = {
-  [Rating.Manual]: 'seen',
-  [Rating.Again]: 'struggling',
-  [Rating.Hard]: 'struggling',
-  [Rating.Good]: 'seen',
-  [Rating.Easy]: 'known',
+const statusMap: Record<1 | 2 | 3 | 4, 'struggling' | 'seen' | 'known'> = {
+  1: 'struggling',
+  2: 'struggling',
+  3: 'seen',
+  4: 'known',
 };
 
 export interface VocabularyCard {
@@ -216,6 +215,7 @@ export async function updateWordReview(
         scheduled_days: 0,
         reps: current!.reps ?? 0,
         lapses: current!.lapses ?? 0,
+        learning_steps: 0,
         state: current!.state ?? 0,
         last_review: current!.last_seen_at ? new Date(current!.last_seen_at) : undefined,
       }
@@ -223,8 +223,8 @@ export async function updateWordReview(
 
   const fsrsRating = ratingMap[rating];
   const scheduling = f.repeat(fsrsCard, new Date());
-  const newCard = scheduling[fsrsRating].card;
-  const newStatus = statusMap[fsrsRating];
+  const newCard = scheduling[fsrsRating as 1 | 2 | 3 | 4].card;
+  const newStatus = statusMap[rating];
   const next_review_at = newCard.due.toISOString();
 
   await supabase.from('vocabulary_cards').update({
