@@ -1,15 +1,16 @@
 import { createClient } from '@/utils/supabase/server';
 import { SessionContext } from '@/utils/ai/types';
 import { getNextLessonTopic } from '@/utils/lessons';
+import { getLearnerProfile, getDrillCount, LearnerProfile } from '@/utils/db/learner-profile';
 
 export async function getSessionContext(
   userId: string,
   conversationId: string
-): Promise<SessionContext> {
+): Promise<SessionContext & { learnerProfile: LearnerProfile; drillCount: number }> {
   const supabase = await createClient();
   const now = new Date().toISOString();
 
-  const [sessionResult, lastSessionResult, knownResult, dueResult] = await Promise.all([
+  const [sessionResult, lastSessionResult, knownResult, dueResult, learnerProfile, drillCount] = await Promise.all([
     supabase
       .from('learning_sessions')
       .select('lesson_topic')
@@ -34,6 +35,8 @@ export async function getSessionContext(
       .eq('user_id', userId)
       .in('status', ['seen', 'struggling'])
       .lte('next_review_at', now),
+    getLearnerProfile(userId),
+    getDrillCount(conversationId),
   ]);
 
   const lastTopic = lastSessionResult.data?.lesson_topic ?? null;
@@ -45,7 +48,8 @@ export async function getSessionContext(
     lastTopic,
     knownCount: knownResult.count ?? 0,
     dueCount: dueResult.count ?? 0,
-    anxietySignal: 'medium',
+    learnerProfile,
+    drillCount,
   };
 }
 

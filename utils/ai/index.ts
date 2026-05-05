@@ -11,6 +11,8 @@ import { z } from 'zod';
 import { getNextWord, updateLastWordReview } from '@/utils/vocabulary';
 import { getSessionContext } from '@/utils/sessions';
 import { buildDeutschMeisterSystemPrompt } from '@/utils/prompts/deutschmeister';
+import { runThoughtHook } from '@/utils/ai/thought';
+import { updateErrorPattern, updateDrillCount } from '@/utils/db/learner-profile';
 
 const SENTRY_RELEASE = process.env.SENTRY_RELEASE || 'dev';
 const SENTRY_ENVIRONMENT = process.env.SENTRY_ENVIRONMENT || 'local';
@@ -28,26 +30,51 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
   const { userId } = userData;
   console.log('[respond] userId:', userId.slice(0, 8) + '...');
 
-  const [{ messages: messageHistory, summaries: summaryHistory }, sessionContext] =
+  const [{ messages: messageHistory, summaries: summaryHistory }, sessionCtx] =
     await Promise.all([
       fetchConversationHistory('', userId, conversationId),
       getSessionContext(userId, conversationId),
     ]);
 
+  // Pass 1: Thought Hook (skip on first message — no history to observe)
+  let thoughtHook = undefined;
+  if (messageHistory.length >= 2) {
+    const recentMessages = messageHistory.slice(-6).map((m) => ({
+      role: m.is_user ? ('user' as const) : ('assistant' as const),
+      content: m.content,
+    }));
+    thoughtHook = await runThoughtHook({
+      recentMessages,
+      drillCount: sessionCtx.drillCount,
+      errorPatterns: sessionCtx.learnerProfile.error_patterns,
+      sessionNotes: sessionCtx.learnerProfile.session_notes,
+    });
+    console.log('[thought-hook]', JSON.stringify(thoughtHook));
+  }
+
+  const sessionContext = { ...sessionCtx, thoughtHook };
+
   const conversationMessages = messageHistory.map((m) => ({
     role: m.is_user ? ('user' as const) : ('assistant' as const),
     content: m.content,
   }));
-
   conversationMessages.push({ role: 'user', content: message });
 
   const lastSummary = summaryHistory[0]?.content;
-  // Declared early so the after() closure captures it by reference; fully populated by the time after() runs
   let response = '';
+
   after(async () => {
     await saveConversation('', userId, conversationId, message, '', '', '', response);
     await checkAndGenerateSummary('', userId, conversationId, messageHistory, summaryHistory, lastSummary);
+
+    // Update learner profile based on thought hook observations
+    if (thoughtHook?.error_spotted) {
+      await updateErrorPattern(userId, thoughtHook.error_spotted);
+    }
+    const isConversationTurn = thoughtHook?.mode === 'conversation' || thoughtHook?.mode === 'sentence_production';
+    await updateDrillCount(conversationId, isConversationTurn);
   });
+
   try {
     const result = streamText({
       model: googleAI(GEMINI_MODEL),
@@ -60,7 +87,7 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
       },
       tools: {
         get_next_word: tool({
-          description: 'Get the next vocabulary word to teach. Returns an overdue review word first, then a new word. MUST be called before teaching any word.',
+          description: 'Get the next vocabulary word to teach. Call during drill mode before introducing a word.',
           parameters: z.object({}),
           execute: async () => {
             console.log('[tool] get_next_word');
@@ -68,9 +95,9 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
           },
         }),
         update_last_word_review: tool({
-          description: 'Rate the last word shown after user responds. Call immediately after any user response to a word.',
+          description: 'Rate the last vocabulary word after student responds during drill mode only. Do NOT call during conversation or sentence_production mode.',
           parameters: z.object({
-            rating: z.number().describe('1=wrong/no idea, 2=hard/needs practice, 3=good/mostly right, 4=easy/perfect'),
+            rating: z.number().describe('1=wrong, 2=hard, 3=good, 4=easy'),
           }),
           execute: async ({ rating }) => {
             console.log('[tool] update_last_word_review, rating:', rating);
