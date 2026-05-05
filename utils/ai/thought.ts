@@ -3,7 +3,7 @@ import { googleAI, GEMINI_OBSERVER_MODEL } from '@/utils/ai';
 import { ThoughtHookOutput, THOUGHT_HOOK_FALLBACK } from '@/utils/ai/types';
 import { buildObserverPrompt } from '@/utils/prompts/thought-observer';
 
-interface ThoughtHookInput {
+export interface ThoughtHookInput {
   recentMessages: { role: 'user' | 'assistant'; content: string }[];
   drillCount: number;
   errorPatterns: Record<string, number>;
@@ -45,7 +45,7 @@ export async function runThoughtHook(input: ThoughtHookInput): Promise<ThoughtHo
       model: googleAI(GEMINI_OBSERVER_MODEL),
       system: systemPrompt,
       prompt: conversationText || 'Konuşma henüz başlamadı.',
-      maxTokens: 200,
+      maxTokens: 300,
     });
 
     // Strip markdown code fences if present

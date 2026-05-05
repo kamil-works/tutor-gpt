@@ -23,8 +23,10 @@ Karar kuralları:
 - Aksi halde → difficulty_signal: "optimal"
 - Eğer öğrenci artikel hatası yaptıysa → error_spotted: "article"
 - Eğer fiil çekimi hatası yaptıysa → error_spotted: "verb_conjugation"
+- Eğer yanlış kelime sırası kullandıysa → error_spotted: "word_order"
+- Eğer yanlış kelime kullandıysa veya kelime bilinmiyorsa → error_spotted: "vocabulary"
 
-Döndüreceğin JSON şeması (bu şemadan sapma):
+Döndüreceğin JSON şeması (kesinlikle bu şemaya uy, sapma):
 {
   "mode": "drill" | "conversation" | "sentence_production" | "grammar_note",
   "technique": "tr_to_de" | "de_to_tr" | "fill_blank" | "make_sentence" | "free_chat" | "error_correction",

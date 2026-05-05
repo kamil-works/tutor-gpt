@@ -19,6 +19,9 @@ vi.mock('ai', () => ({
   generateText: vi.fn(),
 }));
 
+import { generateText } from 'ai';
+import { runThoughtHook } from '@/utils/ai/thought';
+import { THOUGHT_HOOK_FALLBACK } from '@/utils/ai/types';
 import { getLearnerProfile, updateErrorPattern, upsertLearnerProfile } from '@/utils/db/learner-profile';
 
 beforeEach(() => {
@@ -94,10 +97,6 @@ describe('upsertLearnerProfile', () => {
     );
   });
 });
-
-import { generateText } from 'ai';
-import { runThoughtHook } from '@/utils/ai/thought';
-import { THOUGHT_HOOK_FALLBACK } from '@/utils/ai/types';
 
 describe('runThoughtHook', () => {
   it('parses valid JSON response from LLM', async () => {
