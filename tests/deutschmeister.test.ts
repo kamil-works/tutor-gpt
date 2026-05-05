@@ -1,39 +1,84 @@
 import { describe, it, expect } from 'vitest';
-import { buildDeutschMeisterSystemPrompt, type SessionContext } from '@/utils/prompts/deutschmeister';
+import { buildDeutschMeisterSystemPrompt } from '@/utils/prompts/deutschmeister';
+import { SessionContext } from '@/utils/ai/types';
 import { getNextLessonTopic, A1_LESSON_PROGRESSION } from '@/utils/lessons';
 import { renderArticles } from '@/components/ArticleRenderer';
 
+const ctx: SessionContext = {
+  lessonTopic: 'Test Topic',
+  lastTopic: null,
+  knownCount: 0,
+  dueCount: 5,
+  anxietySignal: 'medium',
+};
+
 describe('buildDeutschMeisterSystemPrompt', () => {
-  const ctx: SessionContext = {
-    lessonTopic: 'Selamlaşma',
-    lastTopic: null,
-    knownCount: 0,
-    dueCount: 5,
-    anxietySignal: 'medium',
-  };
-
-  it('includes the tool loop instructions', () => {
-    const prompt = buildDeutschMeisterSystemPrompt(ctx);
-    expect(prompt).toContain('get_next_word');
-    expect(prompt).toContain('update_last_word_review');
-  });
-
-  it('includes the article color system', () => {
-    const prompt = buildDeutschMeisterSystemPrompt(ctx);
-    expect(prompt).toContain('🔵 der');
-    expect(prompt).toContain('🔴 die');
-    expect(prompt).toContain('🟢 das');
-  });
-
   it('injects session context', () => {
     const prompt = buildDeutschMeisterSystemPrompt(ctx);
     expect(prompt).toContain('0/650');
   });
 
-  it('reflects anxiety signal', () => {
-    const highCtx: SessionContext = { ...ctx, anxietySignal: 'high' };
-    const prompt = buildDeutschMeisterSystemPrompt(highCtx);
-    expect(prompt).toContain('high');
+  it('includes article rule', () => {
+    const prompt = buildDeutschMeisterSystemPrompt(ctx);
+    expect(prompt).toContain('🔵');
+    expect(prompt).toContain('🔴');
+    expect(prompt).toContain('🟢');
+  });
+
+  it('includes teacher_guidance block when thoughtHook provided', () => {
+    const ctxWithHook: SessionContext = {
+      ...ctx,
+      thoughtHook: {
+        mode: 'conversation',
+        technique: 'free_chat',
+        difficulty_signal: 'optimal',
+        error_spotted: null,
+        drill_count: 3,
+        teaching_note: 'Sohbet aç.',
+      },
+    };
+    const prompt = buildDeutschMeisterSystemPrompt(ctxWithHook);
+    expect(prompt).toContain('<teacher_guidance>');
+    expect(prompt).toContain('MODE: conversation');
+    expect(prompt).toContain('TECHNIQUE: free_chat');
+  });
+
+  it('uses default drill guidance when thoughtHook is undefined', () => {
+    const prompt = buildDeutschMeisterSystemPrompt(ctx); // ctx has no thoughtHook
+    expect(prompt).toContain('MODE: drill');
+    expect(prompt).toContain('İlk mesaj');
+  });
+
+  it('includes error focus when error_spotted is set', () => {
+    const ctxWithError: SessionContext = {
+      ...ctx,
+      thoughtHook: {
+        mode: 'drill',
+        technique: 'fill_blank',
+        difficulty_signal: 'optimal',
+        error_spotted: 'article',
+        drill_count: 1,
+        teaching_note: 'Article hatası var.',
+      },
+    };
+    const prompt = buildDeutschMeisterSystemPrompt(ctxWithError);
+    expect(prompt).toContain('ERROR_FOCUS: article');
+  });
+
+  it('includes technique hint when thoughtHook provided', () => {
+    const ctxWithHook: SessionContext = {
+      ...ctx,
+      thoughtHook: {
+        mode: 'drill',
+        technique: 'tr_to_de',
+        difficulty_signal: 'optimal',
+        error_spotted: null,
+        drill_count: 0,
+        teaching_note: 'Kelime çalış.',
+      },
+    };
+    const prompt = buildDeutschMeisterSystemPrompt(ctxWithHook);
+    expect(prompt).toContain('TEKNİK İPUCU');
   });
 });
 

@@ -1,25 +1,50 @@
-import { SessionContext } from '@/utils/ai/types';
+import { SessionContext, ThoughtHookOutput } from '@/utils/ai/types';
 
 export type { SessionContext };
 
+function buildTeacherGuidance(hook: ThoughtHookOutput): string {
+  const errorFocus = hook.error_spotted
+    ? `\nERROR_FOCUS: ${hook.error_spotted} — bu hatayı bu turda ele al`
+    : '';
+  return `<teacher_guidance>
+MODE: ${hook.mode}
+TECHNIQUE: ${hook.technique}
+DIFFICULTY: ${hook.difficulty_signal}${errorFocus}
+NOTE: ${hook.teaching_note}
+</teacher_guidance>`;
+}
+
+const TECHNIQUE_HINTS: Record<string, string> = {
+  tr_to_de: 'Türkçe anlamı ver, Almancasını + artiklini iste.',
+  de_to_tr: 'Almanca kelimeyi ver, Türkçe anlamını iste.',
+  fill_blank: 'Kelimeyi içeren bir cümle yaz, kelimeyi ___ ile değiştir.',
+  make_sentence: '"Bu kelimeyi kullanarak bir cümle kur" de.',
+  free_chat: 'Bilinen kelimelerle 2-3 tur Almanca sohbet başlat. update_last_word_review ÇAĞIRMA.',
+  error_correction: 'Önce hatayı nazikçe düzelt, sonra devam et.',
+};
+
 export function buildDeutschMeisterSystemPrompt(ctx: SessionContext): string {
-  return `Sen DeutschMeister'sın — Türkçe konuşan A1 Almanca öğrencisine öğretiyorsun.
+  const basePrompt = `Sen DeutschMeister'sın — Türkçe konuşan A1 öğrencisine özel Almanca öğretmeni.
 
-ARAÇ KURALLARI (zorunlu, atlama):
-1. Kelime öğretmeden ÖNCE → get_next_word çağır
-2. Öğrenci kelimeye cevap verdikten SONRA → update_last_word_review çağır
-   (1=yanlış, 2=zor, 3=iyi, 4=kolay)
-3. get_next_word null dönerse → SADECE şunu yaz: "Bugünlük tüm kelimeleri tekrar ettin! 🎉 Yarın yeni kelimeler seni bekliyor." — başka kelime UYDURMAKTAN KESİNLİKLE KAÇIN.
+ARAÇLARIN:
+- get_next_word: Sıradaki kelimeyi getir. Drill modunda NE ZAMAN çağıracağına sen karar ver.
+- update_last_word_review: Drill sonrası öğrencinin cevabını puanla (1-4). Sohbet/cümle modunda ÇAĞIRMA.
 
-DERS DÖNGÜSÜ:
-get_next_word → kelimeyi öğret → öğrenciden cevap iste → update_last_word_review → tekrar
-
-ARTİKEL KURALI:
-Her ismi DAIMA emoji+artikel ile yaz: 🔵 der Hund | 🔴 die Katze | 🟢 das Buch
-Artikelsiz asla yazma.
-
-Kısa mesajlar. Almanca kelimeler **kalın**.
-Hata varsa önce onayla: "✓ Güzel! Sadece: [doğrusu]"
-Kaygı seviyesi ${ctx.anxietySignal}: low=açık düzelt / medium=nazik / high=sadece doğruyu tekrar et.
+ARTİKEL KURALI: 🔵 der Hund | 🔴 die Katze | 🟢 das Buch — artikelsiz asla yazma.
+HATA DÜZELTMESİ: "✓ Güzel! Sadece: [doğrusu]"
 Bilinen kelime: ${ctx.knownCount}/650`.trim();
+
+  if (!ctx.thoughtHook) {
+    // First message — no history to observe, start with a drill
+    return basePrompt + `\n\n<teacher_guidance>
+MODE: drill
+TECHNIQUE: tr_to_de
+DIFFICULTY: optimal
+NOTE: İlk mesaj. get_next_word ile başla, sıcak bir karşılama yap.
+</teacher_guidance>`;
+  }
+
+  const techniqueHint = TECHNIQUE_HINTS[ctx.thoughtHook.technique] ?? '';
+  const guidance = buildTeacherGuidance(ctx.thoughtHook);
+  return `${basePrompt}\n\nTEKNİK İPUCU (${ctx.thoughtHook.technique}): ${techniqueHint}\n\n${guidance}`;
 }
