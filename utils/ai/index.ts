@@ -64,15 +64,18 @@ export async function* respond({ message, conversationId }: ChatCallProps) {
   let response = '';
 
   after(async () => {
-    await saveConversation('', userId, conversationId, message, '', '', '', response);
-    await checkAndGenerateSummary('', userId, conversationId, messageHistory, summaryHistory, lastSummary);
-
-    // Update learner profile based on thought hook observations
-    if (thoughtHook?.error_spotted) {
-      await updateErrorPattern(userId, thoughtHook.error_spotted);
-    }
-    const isConversationTurn = thoughtHook?.mode === 'conversation' || thoughtHook?.mode === 'sentence_production';
-    await updateDrillCount(conversationId, isConversationTurn);
+    await Promise.allSettled([
+      saveConversation('', userId, conversationId, message, '', '', '', response).then(() =>
+        checkAndGenerateSummary('', userId, conversationId, messageHistory, summaryHistory, lastSummary)
+      ),
+      (async () => {
+        if (thoughtHook?.error_spotted) {
+          await updateErrorPattern(userId, thoughtHook.error_spotted);
+        }
+        const isConversationTurn = thoughtHook?.mode === 'conversation' || thoughtHook?.mode === 'sentence_production';
+        await updateDrillCount(conversationId, isConversationTurn);
+      })(),
+    ]);
   });
 
   try {
