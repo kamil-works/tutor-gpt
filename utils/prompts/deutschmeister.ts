@@ -1,4 +1,4 @@
-import { SessionContext, ThoughtHookOutput } from '@/utils/ai/types';
+import { SessionContext, ThoughtHookOutput, TeachingTechnique } from '@/utils/ai/types';
 
 export type { SessionContext };
 
@@ -14,7 +14,7 @@ NOTE: ${hook.teaching_note}
 </teacher_guidance>`;
 }
 
-const TECHNIQUE_HINTS: Record<string, string> = {
+const TECHNIQUE_HINTS: Record<TeachingTechnique, string> = {
   tr_to_de: 'Türkçe anlamı ver, Almancasını + artiklini iste.',
   de_to_tr: 'Almanca kelimeyi ver, Türkçe anlamını iste.',
   fill_blank: 'Kelimeyi içeren bir cümle yaz, kelimeyi ___ ile değiştir.',
@@ -44,7 +44,7 @@ NOTE: İlk mesaj. get_next_word ile başla, sıcak bir karşılama yap.
 </teacher_guidance>`;
   }
 
-  const techniqueHint = TECHNIQUE_HINTS[ctx.thoughtHook.technique] ?? '';
+  const techniqueHint = TECHNIQUE_HINTS[ctx.thoughtHook.technique];
   const guidance = buildTeacherGuidance(ctx.thoughtHook);
   return `${basePrompt}\n\nTEKNİK İPUCU (${ctx.thoughtHook.technique}): ${techniqueHint}\n\n${guidance}`;
 }

@@ -78,7 +78,8 @@ describe('buildDeutschMeisterSystemPrompt', () => {
       },
     };
     const prompt = buildDeutschMeisterSystemPrompt(ctxWithHook);
-    expect(prompt).toContain('TEKNİK İPUCU');
+    expect(prompt).toContain('TEKNİK İPUCU (tr_to_de)');
+    expect(prompt).toContain('Türkçe anlamı ver, Almancasını + artiklini iste.');
   });
 });
 

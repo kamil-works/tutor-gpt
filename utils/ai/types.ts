@@ -47,7 +47,8 @@ export interface SessionContext {
   lastTopic: string | null;
   knownCount: number;
   dueCount: number;
-  anxietySignal: 'low' | 'medium' | 'high';
+  /** @deprecated kept for backward compat, not used in prompt */
+  anxietySignal?: 'low' | 'medium' | 'high';
   thoughtHook?: ThoughtHookOutput;
 }
 
